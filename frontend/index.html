@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomNom.pl - zamów jedzenie szybko i łatwo</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script type="module" src="../js/components/components.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <x-navbar></x-navbar>
+
+    <main>
+        <div id="main-content">
+            <section id="left-section">
+                <div id="left-section-content">
+                    <div>
+                        <img src="images/icons/map-pin-accent.png" style="width: 1.4em;"/>
+                        <span class="poppins-medium" style="font-size: 1.2em;">&nbsp;&nbsp;Polska</span>
+                    </div>
+                    <h1 class="poppins-bold">Odkryj wiele restauracji<br>w swojej okolicy</h1>
+                    <h3 class="poppins-medium">Zamawiaj szybko i łatwo do swojego domu,<br>z wielu restauracji, z darmową dostawą!</h3>
+                    <x-address-input></x-address-input>
+                </div>
+            </section>
+
+            <section id="right-section">
+                <img src="images/graphics/background-food.png"/>
+            </section>
+        </div>
+
+        <div id="top-categories">
+            <div class="category-card">
+                <img src="images/graphics/pizza.jpg"/>
+                <div>
+                    <img src="images/icons/pizza.png"/>
+                    <span>Pizza</span>
+                    <img src="images/icons/right-arrow-accent.png"/>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <img src="images/graphics/sushi.jpg"/>
+                <div>
+                    <img src="images/icons/sushi-roll.png"/>
+                    <span>Sushi</span>
+                    <img src="images/icons/right-arrow-accent.png"/>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <img src="images/graphics/burgers.jpg"/>
+                <div>
+                    <img src="images/icons/burger.png"/>
+                    <span>Hamburgery</span>
+                    <img src="images/icons/right-arrow-accent.png"/>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <img src="images/graphics/vegan.jpg"/>
+                <div>
+                    <img src="images/icons/vegan.png"/>
+                    <span>Vegan</span>
+                    <img src="images/icons/right-arrow-accent.png"/>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <x-footer></x-footer>
+</body>
+</html>

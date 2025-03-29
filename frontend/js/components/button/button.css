@@ -1,0 +1,75 @@
+.big-button {
+    width: 100%;
+    border-radius: 30px;
+    padding: 15px 22px;
+    font-size: 1.1rem;
+    color: var(--text-color-light);
+    background: var(--accent);
+    border: none;
+    cursor: pointer;    
+    margin-right: 80px;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+
+    transition: background 0.3s, border-radius 0.3s;
+}
+
+.big-button:hover {
+    background: var(--dark-accent);
+    border-radius: 20px;
+}
+
+.big-button:active {
+    background: var(--accent);
+    border-radius: 30px;
+}
+
+.standard-button {
+    width: 100%;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-size: 14px;
+    color: var(--text-color-light);
+    background: var(--accent);
+    border: none;
+    cursor: pointer;    
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    transition: background 0.25s;
+}
+
+.standard-button:hover {
+    background: var(--dark-accent);
+}
+
+.ghost-button {
+    width: 100%;
+    border-radius: 30px;
+    padding: 8px 23px;
+    font-size: 14px;
+    color: var(--text-color);
+    background: transparent;
+    border: solid 2px var(--accent);
+    cursor: pointer;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    transition: all 0.25s;
+}
+
+.ghost-button:hover {
+    background: var(--accent);
+    color: var(--text-color-light);
+}
+
+.ghost-button:active {
+    background: var(--dark-accent);
+    border-color: var(--dark-accent);
+}

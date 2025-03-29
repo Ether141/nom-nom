@@ -1,0 +1,52 @@
+.address-search-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.address-search-input {
+    width: 100%;
+    padding: 16px 60px 16px 20px;
+    font-size: 18px;
+    border-radius: 30px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: #0e0e0eb8 0px 0px 15px;
+    transition: box-shadow 0.3s;
+}
+
+.address-search-input:focus {
+    box-shadow: var(--accent) 0px 0px 20px;
+    transition: box-shadow 0.3s;
+}
+
+.address-search-button {
+    position: absolute;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background-color: var(--accent);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+    white-space: nowrap;
+}
+
+.address-search-button:hover {
+    background: var(--dark-accent);
+    transition: background 0.3s;
+}
+
+.address-search-button:active {
+    background: var(--accent);
+    transition: background 0.15s;
+}

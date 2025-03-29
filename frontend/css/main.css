@@ -1,0 +1,27 @@
+@import url(./inputs.css);
+@import url(./font.css);
+
+:root {
+    --accent: #f85649;
+    --dark-accent: #bd2b1f;
+    --text-color: #1a1a1a;
+    --text-color-light: #f3f3f3;
+    --border-color: #ccc;
+    --error-color: #ff0000;
+    --background-color: #fff9f9;
+    --background-dark-color: #eedfdf;
+    --nav-color: #ffffff;
+}
+
+body {
+    background: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}

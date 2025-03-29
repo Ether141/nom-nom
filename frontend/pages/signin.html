@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomNom.pl - zamów jedzenie szybko i łatwo</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/sign-form.css">
+    <script type="module" src="../js/components/components.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <x-navbar options="background back-button minimal"></x-navbar>
+
+    <main>
+        <section>
+            <div id="main-content">
+                <h2 class="poppins-medium">Zaloguj się</h2>
+                <form>
+                    <x-claim-input inputId="email" type="email" label="E-mail" errorText="Nieprawidłowy adres e-mail" autocomplete="email" iconSrc="../images/icons/email.png"></x-claim-input>
+                    <x-claim-input inputId="password" type="password" label="Hasło" errorText="Nieprawidłowe hasło" autocomplete="current-password" iconSrc="../images/icons/key.png"></x-claim-input>
+                </form>
+
+                <x-button label="Zaloguj się"></x-button>
+
+                <div id="bottom-text">
+                    <span>Nie masz konta?</span>
+                </div>
+
+                <a href="./signup.html">
+                    <x-button buttonStyle="ghost" label="Załóż konto"></x-button>
+                </a>
+
+                <span style="text-align: center; font-size: 12px;" class="poppins-light">
+                    Logując się akceptujesz nasze <a href="#">warunki korzystania</a><br>oraz <a href="#">politykę prywatności</a>.
+                </span>
+            </div>
+        </section>
+    </main>
+    
+    <x-footer></x-footer>
+</body>
+
+</html>

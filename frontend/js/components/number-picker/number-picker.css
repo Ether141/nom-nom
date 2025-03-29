@@ -1,0 +1,35 @@
+.number-picker {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+}
+
+.number-picker span {
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    height: 1.5em;
+    min-width: 0.5em;
+    text-align: center;
+}
+
+.number-picker button {
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1em;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    background: var(--accent);
+    color: var(--text-color-light);
+    border-radius: 50%;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.number-picker button:hover {
+    cursor: pointer;
+    background: var(--dark-accent);
+}

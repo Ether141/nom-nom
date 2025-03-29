@@ -1,0 +1,117 @@
+#main-content {
+    display: grid;
+    grid-template-columns: 10fr 10fr;
+    grid-template-rows: 1fr;
+    height: 700px;
+}
+
+#right-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#right-section > img {
+    width: 100%;
+    max-width: 650px;
+    margin-left: 50px;
+}
+
+#left-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#left-section-content {
+    display: flex;
+    flex-direction: column;
+    margin: 10%;
+}
+
+#left-section-content > h1 {
+    font-size: 2.7em;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    color: var(--text-color);
+}
+
+#left-section-content > h3 {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    color: var(--text-color);
+}
+
+#top-categories {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    height: 220px;
+    margin-top: 50px;
+    padding: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: rgb(238, 223, 223)
+}
+
+.category-card {
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.category-card > img {
+    width: 100%;
+    height: 100%;
+}
+
+.category-card > div {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+
+    position: absolute;
+    width: 83%;
+    height: 18%;
+    margin-bottom: 5%;
+    background: white;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    text-align: left;
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.category-card > div:hover {
+    cursor: pointer;
+}
+
+.category-card > div > img:first-child {
+    width: 22px;
+    height: 22px;
+    margin-right: 15px;
+    margin-left: 15px;
+    transition: transform 0.3s;
+}
+
+.category-card > div > img:last-child {
+    width: 22px;
+    height: 22px;
+    margin-right: 20px;
+    margin-left: auto;
+    transition: margin-right 0.3s;
+}
+
+.category-card > div:hover > img:first-child {
+    transform: rotate(10deg) scale(1.15);
+    transition: transform 0.3s;
+}
+
+.category-card > div:hover > img:last-child {
+    margin-right: 15px;
+    transition: margin-right 0.3s;
+}

@@ -1,0 +1,85 @@
+nav {
+    background: var(--nav-color);
+    box-shadow: 0px 0px 10px #0e0e0e74;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+main > section {
+    width: 400px;
+    height: fit-content;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px #00000036;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+#main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+form,
+section,
+section a {
+    width: 100%;
+}
+
+x-button {
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+#bottom-text {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    position: relative;
+    text-align: center;
+}
+
+#bottom-text::before {
+    left: calc(50% - 150px);
+}
+
+#bottom-text::after {
+    right: calc(50% - 150px);
+}
+
+#bottom-text::before,
+#bottom-text::after {
+    content: "";
+    background: var(--border-color);
+    height: 2px;
+    width: calc(142px - 50%);
+    display: block;
+    position: absolute;
+    top: 50%;
+}
+
+@media screen and (max-width: 700px) {
+    main > section {
+        box-shadow: none;
+    }
+
+    body {
+        background: white;
+    }
+}

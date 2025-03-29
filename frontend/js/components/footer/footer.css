@@ -1,0 +1,11 @@
+footer {
+    width: 100%;
+    background: var(--nav-color);
+    box-shadow: 0px 0px 10px #0e0e0e74;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

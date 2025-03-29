@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomNom.pl - zamów jedzenie szybko i łatwo</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/restaurant.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="module" src="../js/components/components.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <x-navbar options="background"></x-navbar>
+
+    <main>
+        <div id="main-content">
+            <section id="restaurant">
+                <img id="banner" src="../images/graphics/banners/pizza.jpg" />
+                <span id="restaurant-title">Restauracja Włoska Pizza</span>
+
+                <div class="details-row">
+                    <img src="../images/icons/star.png" />
+                    <span class="poppins-medium">4.4</span>
+                    <span class="poppins-light">(20)</span><span>•</span>
+                    <span class="poppins-regular">Włoska, Pizza, Pasta</span><span>•</span>
+                    <img src="../images/icons/clock.png" />
+                    <span class="poppins-light">30-45 min</span><span>•</span>
+                    <img src="../images/icons/motorcycle.png" />
+                    <span class="poppins-light">5 zł</span><span>•</span>
+                    <span class="poppins-light">min. 40 zł</span>
+                </div>
+
+                <span id="restaurant-description">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis officia dolores ipsa saepe minima
+                    accusamus non dicta optio necessitatibus molestias? Deleniti consequuntur itaque doloribus!
+                    Voluptatibus perspiciatis suscipit officiis sit repellendus ab modi illum accusamus quis!
+                </span>
+
+                <div id="categories-slider">
+                    <div>
+                        <div class="category-btn category-selected" data-target="cat-pizza">Pizza</div>
+                        <div class="category-btn" data-target="cat-napoje">Napoje</div>
+                        <div class="category-btn" data-target="cat-desery">Desery</div>
+                        <div class="category-btn" data-target="cat-przystawki">Przystawki</div>
+                        <div class="category-btn" data-target="cat-salatki">Sałatki</div>
+                        <div class="category-btn" data-target="cat-zupy">Zupy</div>
+                        <div class="category-btn" data-target="cat-panini">Panini</div>
+                        <div class="category-btn" data-target="cat-lasagna">Lasagna</div>
+                        <div class="category-btn" data-target="cat-calzone">Calzone</div>
+                    </div>
+                </div>
+
+                <div id="products">
+                    <div class="category-container" id="cat-pizza">
+                        <span>Pizza</span>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Pizza Margherita</span>
+                                    <span class="product-price">42,00 zł</span>
+                                </div>
+                                <span class="product-details">Pizza na cienkim cieście</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Pizza Pepperoni</span>
+                                    <span class="product-price">45,00 zł</span>
+                                </div>
+                                <span class="product-details">Pizza z pepperoni i serem</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Pizza Quattro Formaggi</span>
+                                    <span class="product-price">48,00 zł</span>
+                                </div>
+                                <span class="product-details">Pizza z czterema serami</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-container" id="cat-napoje">
+                        <span>Napoje</span>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Coca Cola</span>
+                                    <span class="product-price">5,00 zł</span>
+                                </div>
+                                <span class="product-details">Napój gazowany 0.5L</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Woda Mineralna</span>
+                                    <span class="product-price">4,00 zł</span>
+                                </div>
+                                <span class="product-details">Woda niegazowana 0.5L</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Sok Pomarańczowy</span>
+                                    <span class="product-price">6,00 zł</span>
+                                </div>
+                                <span class="product-details">Sok świeżo wyciskany 0.3L</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-container" id="cat-desery">
+                        <span>Desery</span>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Tiramisu</span>
+                                    <span class="product-price">15,00 zł</span>
+                                </div>
+                                <span class="product-details">Klasyczny włoski deser</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Panna Cotta</span>
+                                    <span class="product-price">12,00 zł</span>
+                                </div>
+                                <span class="product-details">Deser z kremu śmietankowego</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Gelato</span>
+                                    <span class="product-price">10,00 zł</span>
+                                </div>
+                                <span class="product-details">Włoskie lody</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-container" id="cat-przystawki">
+                        <span>Przystawki</span>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Bruschetta</span>
+                                    <span class="product-price">18,00 zł</span>
+                                </div>
+                                <span class="product-details">Grzanki z pomidorami i bazylią</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Olives</span>
+                                    <span class="product-price">10,00 zł</span>
+                                </div>
+                                <span class="product-details">Miska oliwek</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Caprese</span>
+                                    <span class="product-price">20,00 zł</span>
+                                </div>
+                                <span class="product-details">Sałatka z pomidorów i mozzarelli</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-container" id="cat-salatki">
+                        <span>Sałatki</span>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Sałatka Cezar</span>
+                                    <span class="product-price">25,00 zł</span>
+                                </div>
+                                <span class="product-details">Sałatka z kurczakiem i parmezanem</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Sałatka Grecka</span>
+                                    <span class="product-price">22,00 zł</span>
+                                </div>
+                                <span class="product-details">Sałatka z fetą i oliwkami</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Sałatka z Tuńczykiem</span>
+                                    <span class="product-price">24,00 zł</span>
+                                </div>
+                                <span class="product-details">Sałatka z tuńczykiem i jajkiem</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-container" id="cat-zupy">
+                        <span>Zupy</span>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Minestrone</span>
+                                    <span class="product-price">18,00 zł</span>
+                                </div>
+                                <span class="product-details">Włoska zupa warzywna</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Zupa Pomidorowa</span>
+                                    <span class="product-price">16,00 zł</span>
+                                </div>
+                                <span class="product-details">Zupa z pomidorów</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Zupa Grzybowa</span>
+                                    <span class="product-price">20,00 zł</span>
+                                </div>
+                                <span class="product-details">Zupa z grzybów leśnych</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-container" id="cat-panini">
+                        <span>Panini</span>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Panini z Szynką</span>
+                                    <span class="product-price">15,00 zł</span>
+                                </div>
+                                <span class="product-details">Panini z szynką i serem</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Panini z Kurczakiem</span>
+                                    <span class="product-price">18,00 zł</span>
+                                </div>
+                                <span class="product-details">Panini z kurczakiem i warzywami</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Panini z Mozzarellą</span>
+                                    <span class="product-price">17,00 zł</span>
+                                </div>
+                                <span class="product-details">Panini z mozzarellą i pomidorami</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-container" id="cat-lasagna">
+                        <span>Lasagna</span>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Lasagna Bolognese</span>
+                                    <span class="product-price">30,00 zł</span>
+                                </div>
+                                <span class="product-details">Lasagna z mięsem mielonym</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Lasagna Wegetariańska</span>
+                                    <span class="product-price">28,00 zł</span>
+                                </div>
+                                <span class="product-details">Lasagna z warzywami</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Lasagna z Kurczakiem</span>
+                                    <span class="product-price">32,00 zł</span>
+                                </div>
+                                <span class="product-details">Lasagna z kurczakiem i szpinakiem</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-container" id="cat-calzone">
+                        <span>Calzone</span>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Calzone z Szynką</span>
+                                    <span class="product-price">25,00 zł</span>
+                                </div>
+                                <span class="product-details">Calzone z szynką i serem</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Calzone z Warzywami</span>
+                                    <span class="product-price">22,00 zł</span>
+                                </div>
+                                <span class="product-details">Calzone z warzywami</span>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div>
+                                <div>
+                                    <span class="product-name">Calzone z Kurczakiem</span>
+                                    <span class="product-price">27,00 zł</span>
+                                </div>
+                                <span class="product-details">Calzone z kurczakiem i serem</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="bag">
+                <div>
+                    <span>Twój koszyk</span>
+
+                    <div class="bag-item">
+                        <div>
+                            <span class="bag-item-name">Pizza Margherita</span>
+                            <span class="bag-item-price">44,00 zł</span>
+                        </div>
+                        <number-picker min="1" max="5" value="2" id="picker"/>
+                    </div>
+
+                    <div class="bag-item">
+                        <div>
+                            <span class="bag-item-name">Pizza Pepperoni</span>
+                            <span class="bag-item-price">45,00 zł</span>
+                        </div>
+                        <number-picker min="1" max="5" value="1"/>
+                    </div>
+
+                    <div class="bag-item">
+                        <div>
+                            <span class="bag-item-name">Pizza Quattro Formaggi</span>
+                            <span class="bag-item-price">48,00 zł</span>
+                        </div>
+                        <number-picker min="1" max="5" value="3"/>
+                    </div>
+
+                    <div class="bag-item">
+                        <div>
+                            <span class="bag-item-name">Coca Cola</span>
+                            <span class="bag-item-price">5,00 zł</span>
+                        </div>
+                        <number-picker min="1" max="5" value="2"/>
+                    </div>
+
+                    <div class="bag-item">
+                        <div>
+                            <span class="bag-item-name">Tiramisu</span>
+                            <span class="bag-item-price">15,00 zł</span>
+                        </div>
+                        <number-picker min="1" max="5" value="1"/>
+                    </div>
+
+                    <div id="bag-summary-details">
+                        <div>
+                            <span>Cena zamówienia:</span>
+                            <span>88,00 zł</span>
+                        </div>
+    
+                        <div>
+                            <span>Koszt dostawy:</span>
+                            <span>0,00 zł</span>
+                        </div>
+                    </div>
+    
+                    <div id="bag-summary">
+                        <x-button label="Zamów"></x-button>
+                        <div>
+                            <span id="bag-summary-label">Razem: </span>
+                            <span id="bag-summary-price">88,00 zł</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <x-footer></x-footer>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const picker = document.getElementById("picker");
+
+        picker.addEventListener("valuechanged", () => {
+            console.log(picker.getValue());
+        });
+    });
+
+    const scrollContainer = document.getElementById("categories-slider")
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    scrollContainer.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    scrollContainer.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+
+    scrollContainer.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX);
+        scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    // Pobieramy elementy
+    const buttons = document.querySelectorAll(".category-btn");
+    const categories = document.querySelectorAll(".category-container");
+
+    // Funkcja przewijania do kategorii
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - document.getElementById("categories-slider").offsetHeight, // Odejmujemy wysokość slidera
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // Funkcja aktualizowania aktywnej kategorii w sliderze
+    function updateActiveCategory() {
+        let currentCategory = "";
+        const scrollPosition = window.scrollY;
+
+        categories.forEach(category => {
+            if (scrollPosition >= category.offsetTop - document.getElementById("categories-slider").offsetHeight - 10) {
+                currentCategory = category.id;
+            }
+        });
+        
+        if (currentCategory === "") {
+            currentCategory = categories[0].id;
+        }
+
+        buttons.forEach(button => {
+            if (button.getAttribute("data-target") === currentCategory) {
+                button.classList.add("category-selected");
+            } else {
+                button.classList.remove("category-selected");
+            }
+        });
+    }
+
+    const el = document.querySelector("#categories-slider");
+    const observer = new IntersectionObserver( 
+        ([e]) => e.target.classList.toggle("scrolled", e.intersectionRatio < 1),
+        { threshold: [1] }
+    );
+
+    observer.observe(el);
+
+    window.addEventListener("scroll", () => {
+        updateActiveCategory();
+    });
+</script>
+
+</html>
