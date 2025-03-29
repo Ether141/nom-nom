@@ -1,0 +1,3 @@
+[submodule "blink-http"]
+	path = blink-http
+	url = https://github.com/Ether141/blink-http
