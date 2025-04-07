@@ -1,0 +1,42 @@
+main {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+#main-content {
+    max-width: 800px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#main-content > div {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 30px;
+    background: white;
+    box-shadow: #00000054 0px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 820px) {
+    #main-content > div {
+        border-radius: 0;
+    }
+}
