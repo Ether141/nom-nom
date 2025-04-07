@@ -1,0 +1,1 @@
+import RestaurantCard from './components/restaurant-card/restaurant-card.js';

@@ -65,91 +65,29 @@
                 </div>
 
                 <div id="restaurants-list">
-                    <div class="restaurant-card">
-                        <img src="../images/graphics/burgers.jpg"/>
-                        <div>
-                            <h2 class="poppins-medium">Restauracja 1</h2>
-                            <div>
-                                <img src="../images/icons/star.png"/>
-                                <span class="poppins-medium">4.5</span>
-                                <span class="poppins-light">(20)</span><span>•</span>
-                                <span class="poppins-regular">Polska, Domowa</span>
-                            </div>
-                            <div>
-                                <img src="../images/icons/clock.png"/>
-                                <span class="poppins-light">30-45 min</span><span>•</span>
-                                <img src="../images/icons/motorcycle.png"/>
-                                <span class="poppins-light">5 zł</span><span>•</span>
-                                <span class="poppins-light">min. 40 zł</span>
-                            </div>
-                        </div>
-                    </div>
+                    <x-restaurant-card restaurant-name="Restauracja 1" restaurant-image="../images/graphics/burgers.jpg"
+                        tags="Polska, Domowa" rating="4.5" rating-number="20" waiting-time="30-45" delivery-price="5"
+                        min-price="40"></x-restaurant-card>
 
-                    <div class="restaurant-card">
-                        <img src="../images/graphics/restaurant2.jpg"/>
-                        <div>
-                            <h2 class="poppins-medium">Restauracja 2</h2>
-                            <div>
-                                <img src="../images/icons/star.png"/>
-                                <span class="poppins-medium">4.2</span>
-                                <span class="poppins-light">(15)</span><span>•</span>
-                                <span class="poppins-regular">Włoska, Pizza</span>
-                            </div>
-                            <div>
-                                <img src="../images/icons/clock.png"/>
-                                <span class="poppins-light">20-35 min</span><span>•</span>
-                                <img src="../images/icons/motorcycle.png"/>
-                                <span class="poppins-light">3 zł</span><span>•</span>
-                                <span class="poppins-light">min. 30 zł</span>
-                            </div>
-                        </div>
-                    </div>
+                    <x-restaurant-card restaurant-name="Restauracja 2" restaurant-image="../images/graphics/restaurant2.jpg"
+                        tags="Włoska, Pizza" rating="4.2" rating-number="15" waiting-time="20-35" delivery-price="3"
+                        min-price="30"></x-restaurant-card>
 
-                    <div class="restaurant-card">
-                        <img src="../images/graphics/sushi.jpg"/>
-                        <div>
-                            <h2 class="poppins-medium">Restauracja 3</h2>
-                            <div>
-                                <img src="../images/icons/star.png"/>
-                                <span class="poppins-medium">4.8</span>
-                                <span class="poppins-light">(50)</span><span>•</span>
-                                <span class="poppins-regular">Japońska, Sushi</span>
-                            </div>
-                            <div>
-                                <img src="../images/icons/clock.png"/>
-                                <span class="poppins-light">40-60 min</span><span>•</span>
-                                <img src="../images/icons/motorcycle.png"/>
-                                <span class="poppins-light">10 zł</span><span>•</span>
-                                <span class="poppins-light">min. 50 zł</span>
-                            </div>
-                        </div>
-                    </div>
+                    <x-restaurant-card restaurant-name="Restauracja 3" restaurant-image="../images/graphics/sushi.jpg"
+                        tags="Japońska, Sushi" rating="4.8" rating-number="50" waiting-time="40-60" delivery-price="10"
+                        min-price="50"></x-restaurant-card>
 
-                    <div class="restaurant-card">
-                        <img src="../images/graphics/restaurant1.jpg"/>
-                        <div>
-                            <h2 class="poppins-medium">Restauracja 4</h2>
-                            <div>
-                                <img src="../images/icons/star.png"/>
-                                <span class="poppins-medium">4.0</span>
-                                <span class="poppins-light">(50)</span><span>•</span>
-                                <span class="poppins-regular">Japońska, Sushi</span>
-                            </div>
-                            <div>
-                                <img src="../images/icons/clock.png"/>
-                                <span class="poppins-light">40-60 min</span><span>•</span>
-                                <img src="../images/icons/motorcycle.png"/>
-                                <span class="poppins-light">10 zł</span><span>•</span>
-                                <span class="poppins-light">min. 50 zł</span>
-                            </div>
-                        </div>
-                    </div>
+                    <x-restaurant-card restaurant-name="Restauracja 4" restaurant-image="../images/graphics/restaurant1.jpg"
+                        tags="Japońska, Sushi" rating="4.0" rating-number="50" waiting-time="40-60" delivery-price="10"
+                        min-price="50"></x-restaurant-card>
                 </div>
             </section>
         </div>
     </main>
 
     <x-footer></x-footer>
+    
+    <script type="module" src="../js/search.js"></script>
 </body>
 
 </html>
