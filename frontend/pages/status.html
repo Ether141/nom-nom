@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomNom.pl - zamów jedzenie szybko i łatwo</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/status.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <x-navbar options="background"></x-navbar>
+
+    <main>
+        <div id="main-content">
+            <div id="restaurant">
+                <img id="banner" src="../images/graphics/banners/pizza.jpg" />
+                <span id="restaurant-title">Restauracja Włoska Pizza</span>
+            </div>
+
+            <div id="status">
+                <div id="timer" class="status-icon">
+                    <span>47</span>
+                    <span>min</span>
+                </div>
+
+                <div id="status-in-prep" class="status-icon" style="display: none;">
+                    <img src="/images/icons/in-prep.png" style="margin-left: 5px;"/>
+                </div>
+
+                <div id="status-done" class="status-icon" style="display: none;">
+                    <img src="/images/icons/checkmark.png"/>
+                </div>
+
+                <span id="status-text">Twoje zamówienie jest w drodze</span>
+                <span id="status-additional">Dokładamy wszelkich starań, aby dostarczyć<br>Twoje zamówienie jak najszybciej</span>
+            </div>
+
+            <div id="details">
+                <h2>Szczegóły zamówienia</h2>
+
+                <div class="details-row">
+                    <span>Numer zamówienia</span>
+                    <span>9823</span>
+                </div>
+
+                <div class="details-row">
+                    <span>Godzina zamówienia</span>
+                    <span>12:45</span>
+                </div>
+
+                <div class="details-row">
+                    <span>Opłacono zamówienie</span>
+                    <span>145,49 zł</span>
+                </div>
+
+                <div class="details-row">
+                    <span>Metoda płatności</span>
+                    <span>BLIK</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <x-footer></x-footer>
+
+    <script type="module" src="../js/components/components.js"></script>
+</body>
+
+</html>
