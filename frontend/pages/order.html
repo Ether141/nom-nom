@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomNom.pl - zamów jedzenie szybko i łatwo</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/order.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <x-navbar options="background"></x-navbar>
+
+    <main>
+        <div id="main-content">
+            <div id="restaurant">
+                <img id="banner" src="../images/graphics/banners/pizza.jpg" />
+                <span id="restaurant-title">Restauracja Włoska Pizza</span>
+
+                <div class="details-row">
+                    <img src="../images/icons/star.png" />
+                    <span class="poppins-medium">4.4</span>
+                    <span class="poppins-light">(20)</span><span>•</span>
+                    <span class="poppins-regular">Włoska, Pizza, Pasta</span>
+                </div>
+            </div>
+
+            <div id="address-select">
+                <h2>Adres dostawy</h2>
+
+                <x-address-manager selector="true"></x-address-manager>
+            </div>
+
+            <div id="additional-info">
+                <h2>Dodatkowe informacje</h2>
+
+                <textarea rows="2" placeholder="Dodaj dodatkowe informacje do zamówienia"></textarea>
+            </div>
+
+            <div id="payment-method">
+                <h2>Metoda płatności</h2>
+
+                <div class="list">
+                    <div class="payment">
+                        <img src="../images/icons/wallet.png" />
+                        <span>Mój portfel</span>
+                        <span>100,00 zł</span>
+                    </div>
+
+                    <div class="payment selected">
+                        <img src="../images/icons/blik.png" />
+                        <span>BLIK</span>
+                    </div>
+
+                    <div class="payment">
+                        <img src="../images/icons/card.png" />
+                        <span>Karta kredytowa</span>
+                    </div>
+
+                    <div class="payment">
+                        <img src="../images/icons/paypal.png" />
+                        <span>PayPal</span>
+                    </div>
+
+                    <div class="payment">
+                        <img src="../images/icons/gpay.png" />
+                        <span>Google Pay</span>
+                    </div>
+
+                    <div class="payment">
+                        <img src="../images/icons/applepay.png" />
+                        <span>Apple Pay</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="summary">
+                <h2>Podsumowanie</h2>
+                
+                <div class="list">
+                    <div class="order-product">
+                        <span>Pizza Margherita</span>
+                        <span>42,00 zł</span>
+                    </div>
+                    <div class="order-product-separator"></div>
+                    <div class="order-product">
+                        <span>Burger Grand</span>
+                        <span>35,50 zł</span>
+                    </div>
+                    <div class="order-product-separator"></div>
+                    <div class="order-product">
+                        <span>Pasta Carbonara</span>
+                        <span>28,00 zł</span>
+                    </div>
+                    <div class="order-product-separator"></div>
+                    <div class="order-product">
+                        <span>Caesar Salad</span>
+                        <span>22,00 zł</span>
+                    </div>
+                    <div class="order-product-separator"></div>
+                    <div class="order-product">
+                        <span>Sushi Platter</span>
+                        <span>55,00 zł</span>
+                    </div>
+                    <div class="order-product-separator"></div>
+                    <div class="order-product">
+                        <span>Dostawa</span>
+                        <span>5,99 zł</span>
+                    </div>
+                </div>
+
+                <div class="order-total">
+                    <span>Razem:</span>
+                    <span>188,49 zł</span>
+                </div>
+
+                <div class="btn-container">
+                    <x-button label="Zapłać i zamów"></x-button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <x-footer></x-footer>
+
+    <script type="module" src="../js/components/components.js"></script>
+    <script type="module" src="../js/order.js"></script>
+</body>
+
+</html>

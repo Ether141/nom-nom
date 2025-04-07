@@ -1,0 +1,1 @@
+import AddressManager from "./components/address-manager/address-manager.js";
