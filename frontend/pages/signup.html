@@ -8,7 +8,6 @@
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/signup.css">
-    <script type="module" src="../js/components/components.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -25,10 +24,14 @@
                 <h2 class="poppins-medium">Załóż konto</h2>
 
                 <form>
-                    <x-claim-input id="in" inputId="firstname" type="text" label="Imię" errorText="Nieprawidłowe imię" iconSrc="../images/icons/user.png"></x-claim-input>
-                    <x-claim-input inputId="email" type="email" label="E-mail" errorText="Nieprawidłowy adres e-mail" iconSrc="../images/icons/email.png"></x-claim-input>
-                    <x-claim-input inputId="password" type="password" label="Hasło" errorText="Nieprawidłowe hasło" iconSrc="../images/icons/key.png"></x-claim-input>
-                    <x-claim-input inputId="repeat-password" type="password" label="Powtórz hasło" errorText="Hasła nie są takie same" iconSrc="../images/icons/key.png"></x-claim-input>
+                    <x-claim-input inputId="firstname" type="text" label="Imię" iconSrc="../images/icons/user.png"
+                        autocomplete="given-name"></x-claim-input>
+                    <x-claim-input inputId="email" type="email" label="E-mail" iconSrc="../images/icons/email.png"
+                        autocomplete="email"></x-claim-input>
+                    <x-claim-input inputId="password" type="password" label="Hasło"
+                        iconSrc="../images/icons/key.png"></x-claim-input>
+                    <x-claim-input inputId="repeat-password" type="password" label="Powtórz hasło"
+                        iconSrc="../images/icons/key.png"></x-claim-input>
                 </form>
 
                 <div class="acceptence-container">
@@ -41,24 +44,43 @@
                     <x-toggle name="cbx-offers-acceptance"></x-toggle>
                 </div>
 
-                <x-button label="Załóż konto"></x-button>
+                <span id="error-message" style="display: none;"></span>
+
+                <x-button id="create-account-btn" label="Załóż konto"></x-button>
 
                 <div id="bottom-text">
                     <span>Masz już konto?</span>
                 </div>
 
                 <a href="./signin.html">
-                    <x-button buttonStyle="ghost" label="Zaloguj się"></x-button>
+                    <x-button buttonStyle="ghost" label="Zaloguj się" style="margin-top: 50px;"></x-button>
                 </a>
 
                 <span style="text-align: center; font-size: 12px;" class="poppins-light">
                     Zapoznaj się z naszą <a href="#">polityką prywatności</a> i <a href="#">regulaminem</a>.
                 </span>
             </div>
+
+            <div id="overlay" style="display: none;">
+                <x-progress-indicator id="progress" overlay-width="100%" overlay-height="100%" border-radius="30px"></x-progress-indicator>
+                <div id="overlay-success" style="display: none;">
+                    <x-success-indicator></x-success-indicator>
+                    <h2 class="poppins-medium">Konto zostało założone</h2>
+                    <p class="poppins-light">Teraz możesz się zalogować.</p>
+                    <a href="./signin.html">
+                        <div style="margin-top: 30px;">
+                            <x-button buttonStyle="ghost" label="Zaloguj się"></x-button>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
     <x-footer></x-footer>
+
+    <script type="module" src="../js/signup.js"></script>
+    <script type="module" src="../js/components/components.js"></script>
 </body>
 
 </html>
