@@ -2,6 +2,7 @@ export default class Button extends HTMLElement {
     constructor() {
         super();
 
+        this.enabled = true;
         this.cssFile = '/js/components/button/button.css';
         this.label = this.getAttribute('label') || 'Button';
         this.buttonStyle = this.getAttribute('buttonStyle') || 'standard';
@@ -11,18 +12,29 @@ export default class Button extends HTMLElement {
         this.attachShadow({ mode: 'open' });
 
         this.shadowRoot.innerHTML = `
-            <div>
-                <link rel="stylesheet" href="${this.cssFile}">
-                <button class="${style}">${this.label}</button>
-            </div>
+            <link rel="stylesheet" href="${this.cssFile}">
+            <button class="${style}">${this.label}</button>
         `;
 
         this.shadowRoot.querySelector('button').addEventListener('click', (event) => {
-            if (typeof this.onclick === 'function') {
-                this.onclick(event);
+            if (this.enabled) {
+                this.dispatchEvent(new CustomEvent('onclick', {
+                    bubbles: true,
+                    composed: true
+                }));
             }
-
-            this.dispatchEvent(new CustomEvent('click', { detail: event }));
         });
     }
+
+    disable() {
+        this.shadowRoot.querySelector('button').classList.add('disabled');
+        this.enabled = false;
+    }
+
+    enable() {
+        this.shadowRoot.querySelector('button').classList.remove('disabled');
+        this.enabled = true;
+    }
 }
+
+customElements.define('x-button', Button);
