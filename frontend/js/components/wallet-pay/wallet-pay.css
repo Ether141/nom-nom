@@ -1,0 +1,77 @@
+#wallet-pay-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 20px 20px;
+    gap: 10px;
+    position: relative;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.payment:hover {
+    box-shadow: #00000054 0px 0px 10px;
+    cursor: pointer;
+}
+
+.payment {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    gap: 15px;
+    border-radius: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background: white;
+    box-shadow: #00000054 0px 0px 5px;
+    transition: box-shadow 0.2s, background-color 0.2s;
+}
+
+.payment > img {
+    height: 22px;
+}
+
+h3 {
+    margin: 20px 0 10px 10px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.hidden {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.visible {
+    max-height: 600px;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+
+#blik-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px 20px 30px;
+}
+
+#blik-container > div {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.selected {
+    border: 2px solid var(--accent);
+}
