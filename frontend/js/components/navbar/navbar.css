@@ -1,6 +1,6 @@
 nav {
     width: 100%;
-    height: 140px;
+    height: var(--nav-height);
     display: flex;
     padding: 30px 60px 30px 60px;
     box-sizing: border-box;
@@ -13,7 +13,7 @@ nav {
     box-shadow: 0px 0px 10px #0e0e0e74;
 }
 
-nav > a:first-child {
+nav > a {
     text-decoration: none;
     color: var(--text-color);
     font-family: "Poppins", sans-serif;
@@ -22,7 +22,7 @@ nav > a:first-child {
     transition: color 0.2s ease;
 }
 
-nav > a:first-child:hover {
+nav > a:hover {
     color: var(--accent);
     cursor: pointer;
 }
@@ -42,12 +42,25 @@ nav > a:first-child:hover {
     position: relative;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    font-size: 1em;
+    font-size: 0.85em;
     color: var(--text-color);
     border: none;
     background: none;
     font-style: normal;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-button > a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.nav-button > img {
+    width: 25px;
+    height: 25px;
 }
 
 .nav-button:hover {
@@ -58,36 +71,174 @@ nav > a:first-child:hover {
     content: "";
     position: absolute;
     bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%) scaleX(0);
+    left: 40px;
+    transform: scaleX(0);
     transform-origin: center;
-    width: 100%;
-    height: 1.5px;
+    width: calc(100% - 40px);
+    height: 2px;
     background: var(--text-color);
     transition: transform 0.3s ease;
 }
 
 .nav-button:hover::after {
-    transform: translateX(-50%) scaleX(1);
+    transform: scaleX(1);
 }
 
-#nav-user {
+.nav-user {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
-#nav-user > img {
+.nav-user > img {
     width: 30px;
     height: 30px;
 }
 
-#nav-user > button {
+.nav-user > button {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-size: 1em;
     color: var(--text-color);
     border: none;
     background: none;
+}
+
+@media (min-width: 900px) {
+    #side-menu-btn,
+    #side-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    #nav-right,
+    .nav-user {
+        display: none;
+    }
+
+    nav {
+        padding-left: 30px;
+        gap: 30px;
+    }
+
+    #side-menu-btn {
+        display: block;
+        width: 60px;
+        height: 60px;
+        background: none;
+        border: none;
+    }
+
+    #side-menu-btn:hover {
+        cursor: pointer;
+    }
+
+    #side-menu {
+        width: 250px;
+        height: calc(100% - var(--nav-height));
+        position: absolute;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+        gap: 20px;
+    }
+
+    #side-menu.notactive {
+        left: -300px;
+        transition: left 0.3s ease;
+    }
+
+    #side-menu.active {
+        left: 0;
+        transition: left 0.3s ease;
+    }
+
+    main {
+        transition: filter 0.3s ease;
+    }
+
+    #side-menu-background {
+        position: absolute;
+        width: 100%;
+        height: calc(100% - var(--nav-height));
+        z-index: 9;
+        transition: background-color 0.3s ease;
+    }
+
+    #side-menu-background.active {
+        background: rgba(0, 0, 0, 0.6);
+        pointer-events: all;
+    }
+
+    #side-menu-background.notactive {
+        background: transparent;
+        pointer-events: none;
+    }
+
+    .nav-button {
+        width: fit-content;
+    }
+
+    #side-menu > .nav-user {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 30px;
+    }
+}
+
+.ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+.hamRotate.active {
+  transform: rotate(45deg);
+}
+
+.hamRotate180.active {
+  transform: rotate(180deg);
+}
+
+.line {
+  fill:none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke:#000;
+  stroke-width:5.5;
+  stroke-linecap:round;
+}
+
+.ham .top {
+  stroke-dasharray: 40 160;
+}
+
+.ham .middle {
+  stroke-dasharray: 40 142;
+  transform-origin: 50%;
+  transition: transform 400ms;
+}
+
+.ham .bottom {
+  stroke-dasharray: 40 85;
+  transform-origin: 50%;
+  transition: transform 400ms, stroke-dashoffset 400ms;
+}
+
+.ham.active .top {
+  stroke-dashoffset: -64px;
+}
+
+.ham.active .middle {
+  transform: rotate(90deg);
+}
+
+.ham.active .bottom {
+  stroke-dashoffset: -64px;
 }
