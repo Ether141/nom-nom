@@ -15,7 +15,7 @@
     padding-left: 20px;
     padding-right: 50px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: 2px solid var(--border-color);
     border-radius: 30px;
     font-size: 14px;
     font-family: "Poppins", sans-serif;
@@ -87,10 +87,24 @@
 }
 
 .claim-input-container {
-    padding-top: 10px;
+    padding-top: 6px;
     max-height: 50px;
     overflow: hidden;
     transition: max-height 0.2s;
+}
+
+.claim-input-container.readonly .claim-input-field {
+    background-color: var(--background-color);
+    color: var(--border-color);
+    pointer-events: none;
+}
+
+.claim-input-container.readonly .claim-input-label {
+    color: var(--border-color);
+}
+
+.claim-input-container.readonly .claim-input-field:disabled {
+    background: transparent;
 }
 
 input:-webkit-autofill,
