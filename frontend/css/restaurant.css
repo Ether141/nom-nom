@@ -1,8 +1,3 @@
-nav {
-    background: var(--nav-color);
-    box-shadow: 0px 0px 10px #0e0e0e74;
-}
-
 main {
     display: flex;
     justify-content: center;
