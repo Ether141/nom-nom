@@ -1,0 +1,115 @@
+h3 {
+    margin: 20px 0 10px 10px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+#address-manager > .list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.address,
+#address-add-btn {
+    box-shadow: #00000054 0px 0px 5px;
+    border-radius: 15px;
+    transition: box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+#address-add-btn {
+    width: auto;
+}
+
+.address {
+    background: white;
+    padding: 15px 0 15px 20px;
+    font-size: 0.8rem;
+}
+
+#address-add-btn {
+    align-items: center;
+    padding: 0;
+    background: var(--accent);
+    color: var(--text-color-light);
+    font-size: 2rem;
+    width: 50px;
+    border: none;
+}
+
+.address > span,
+#address-add-btn > span {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.address > span:first-child {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.address:hover:not(.selected),
+#address-add-btn:hover {
+    box-shadow: #00000054 0px 0px 10px;
+    cursor: pointer;
+}
+
+.selected {
+    border: 2px solid var(--accent);
+}
+
+.address-hidden {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.address-visible {
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+@media screen and (min-width: 700px) {
+    #address-add-btn:nth-child(3n+1) {
+        grid-column: span 3;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #address-manager > .list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #address-add-btn:nth-child(2n+1) {
+        grid-column: span 2;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    #address-manager > .list {
+        display: flex;
+        flex-direction: column;
+    }
+  
+    #address-add-btn {
+        width: 100%;
+    }
+}
