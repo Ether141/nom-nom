@@ -12,3 +12,5 @@ export default class Footer extends HTMLElement {
         `;
     }
 }
+
+customElements.define('x-footer', Footer);

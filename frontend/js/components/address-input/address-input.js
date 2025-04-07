@@ -30,3 +30,5 @@ export default class AddressInput extends HTMLElement {
         this.input.value = val;
     }
 }
+
+customElements.define('x-address-input', AddressInput);

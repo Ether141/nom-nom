@@ -46,3 +46,5 @@ export default class NumberPicker extends HTMLElement {
         return this.value;
     }
 }
+
+customElements.define('x-number-picker', NumberPicker);

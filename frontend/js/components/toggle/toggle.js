@@ -38,3 +38,5 @@ export default class Toggle extends HTMLElement {
         this.setAttribute('checked', val.toString());
     }
 }
+
+customElements.define('x-toggle', Toggle);
