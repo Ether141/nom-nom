@@ -35,3 +35,5 @@ export default class Dropdown extends HTMLElement {
         }));
     }
 }
+
+customElements.define('x-dropdown', Dropdown);
