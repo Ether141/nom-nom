@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomNom.pl - zamów jedzenie szybko i łatwo</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <x-navbar options="background"></x-navbar>
+
+    <main>
+        <div id="main-content">
+            <div id="account">
+                <h2>Moje konto</h2>
+
+                <h3>Szczegóły konta</h3>
+                <x-claim-input lock inputId="name" type="text" label="Imię"
+                    iconSrc="../images/icons/user.png" value="Bartek"></x-claim-input>
+
+                <h3>Zmień adres e-mail</h3>
+                <x-claim-input inputId="email" type="email" label="Adres e-mail"
+                    iconSrc="../images/icons/email.png" value="example@gmail.com"></x-claim-input>
+
+                <h3>Zmień hasło</h3>
+                <x-claim-input inputId="current-password" type="password" label="Obecne hasło"
+                    iconSrc="../images/icons/key.png"></x-claim-input>
+
+                <x-claim-input inputId="new-password" type="password" label="Nowe hasło" autocomplete="new-password"
+                    iconSrc="../images/icons/key.png"></x-claim-input>
+
+                <x-claim-input inputId="repeat-new-password" type="password" label="Powtórz nowe hasło"
+                    iconSrc="../images/icons/key.png"></x-claim-input>
+
+                <div class="btn-container">
+                    <x-button id="btn-save-changes" type="primary" label="Zapisz zmiany"></x-button>
+                </div>
+            </div>
+
+            <div id="addresses">
+                <h2>Adresy</h2>
+
+                <x-address-manager></x-address-manager>
+            </div>
+
+            <div id="wallet">
+                <h2>Mój portfel</h2>
+
+                <div class="wallet-info">
+                    <div>
+                        <img src="../images/icons/wallet.png" />
+                        <span>150,00 zł</span>
+                    </div>
+                    <div class="btn-container">
+                        <x-button id="btn-add-funds" type="primary" label="Dodaj środki"></x-button>
+                    </div>
+                </div>
+
+                <x-wallet-pay></x-wallet-pay>
+            </div>
+        </div>
+    </main>
+
+    <x-footer></x-footer>
+    <x-popup-message message="Alert"></x-popup-message>
+
+    <script type="module" src="../js/components/components.js"></script>
+    <script type="module" src="../js/profile.js"></script>
+</body>
+
+</html>

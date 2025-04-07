@@ -1,0 +1,60 @@
+@import url("/css/panels.css");
+
+#main-content > div {
+    padding: 40px;
+}
+
+#account > .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+h3 {
+    margin: 20px 0 10px 10px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+h3::after {
+    content: "";
+    flex: 1;
+    border-bottom: 2px solid var(--border-color);
+    margin: 0 25px 0 15px;
+}
+
+.wallet-info {
+    padding: 0 150px 0 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 720px) {
+    .wallet-info {
+        padding: 0 90px 0 90px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wallet-info {
+        padding: 0 4% 0 4%;
+    }
+}
+
+.wallet-info > div:first-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.wallet-info > div:first-child > span {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.wallet-info > div > img {
+    height: 60px;
+}
