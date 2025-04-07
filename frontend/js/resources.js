@@ -1,0 +1,10 @@
+export const ERR_GENERAL = "Wystąpił błąd, spróbuj ponownie później.";
+export const ERR_ENTER_EMAIL = "Wprowadź adres e-mail.";
+export const ERR_ENTER_PASSWORD = "Wprowadź hasło.";
+export const ERR_ERRORS = "Wystąpiły błędy w formularzu. Proszę poprawić błędy i spróbować ponownie.";
+export const ERR_RULES_ACCEPTANCE = "Musisz zaakceptować regulamin, aby założyć nowe konto.";
+export const ERR_NAME_LENGTH = "Imię musi mieć od 3 do 32 znaków.";
+export const ERR_INVALID_EMAIL = "Podany adres e-mail jest nieprawidłowy.";
+export const ERR_EMAIL_EXISTS = "Podany adres e-mail już istnieje.";
+export const ERR_PASSWORD_PATTERN = "Przynajmniej 8 znaków, duże i małe litery, oraz cyfry.";
+export const ERR_PASSWORD_MISMATCH = "Hasła muszą być takie same.";
