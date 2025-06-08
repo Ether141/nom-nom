@@ -1,6 +1,9 @@
 import ApiClient from "../../api.js"
 
 export default class Navbar extends HTMLElement {
+    #bagCountElement;
+    #bagVisible = false;
+
     constructor() {
         super();
 
@@ -21,6 +24,11 @@ export default class Navbar extends HTMLElement {
                 <div class="nav-button">
                     <img src="/images/icons/key.png"/>
                     <a role="button" href="#">Dodaj swoją restaurację</a>
+                </div>
+
+                <div class="nav-button logout-button" style="display: none;">
+                    <img src="/images/icons/logout.png"/>
+                    <a role="button">Wyloguj się</a>
                 </div>
             </div>
             <div class="nav-user">
@@ -53,8 +61,14 @@ export default class Navbar extends HTMLElement {
                     </svg>
                 </button>` : ''}
                 ${withBackBtn ? '<a href="/index.html">&lt</a>' : ''}
-                <img src="/images/logo.png" id="nav-logo" />
+                <a id="nav-logo-link" href="/index.html">
+                    <img src="/images/logo.png" id="nav-logo" />
+                </a>
                 ${content}
+                <button id="bag-btn">
+                    <img src="/images/icons/bag.png" />
+                    <span>0</span>
+                </button>
             </nav>
             <div id="side-menu-background" class="notactive"></div>
             <div id="side-menu" class="notactive" style="background: ${withBackground ? 'white' : 'var(--background-color)'};">
@@ -74,6 +88,11 @@ export default class Navbar extends HTMLElement {
                     <img src="/images/icons/key.png"/>
                     <a role="button" href="#">Dodaj swoją restaurację</a>
                 </div>
+
+                <div class="nav-button logout-button" style="display: none;">
+                    <img src="/images/icons/logout.png"/>
+                    <a role="button">Wyloguj się</a>
+                </div>
             </div>
         `;
     }
@@ -87,6 +106,7 @@ export default class Navbar extends HTMLElement {
         const sideMenu = this.querySelector('#side-menu');
         const background = this.querySelector('#side-menu-background');
         const svg = this.querySelector('.ham');
+        this.#bagCountElement = this.querySelector('#bag-btn span');
 
         sideMenuBtn.addEventListener('click', () => {
             svg.classList.toggle('active');
@@ -105,40 +125,81 @@ export default class Navbar extends HTMLElement {
             }
         });
 
-        this.#fetchUserInfo().then(userInfo => {
+        Array.from(this.getElementsByClassName("logout-button")).forEach(logoutButton => {
+            logoutButton.addEventListener('click', () => {
+                const client = new ApiClient();
+                client.logout().then(() => {
+                    window.location.href = '/index.html';
+                });
+            });
+        });
+
+        const bagBtn = this.querySelector('#bag-btn');
+        const bag = document.querySelector('x-bag');
+
+        if (bag == null) {
+            bagBtn.style.display = 'none';
+        } else {
+            bagBtn.addEventListener('click', () => {
+                if (bag == null) {
+                    return;
+                }
+
+                if (this.#bagVisible) {
+                    bag.hideBag();
+                    this.#bagVisible = false;
+                    document.body.style.overflow = 'auto';
+                } else {
+                    bag.showBag();
+                    this.#bagVisible = true;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    document.body.style.overflow = 'hidden';
+                }
+
+                background.classList.toggle('active');
+                background.classList.toggle('notactive');
+            });
+        }
+
+        this.refreshUser();
+    }
+
+    refreshUser() {
+        const client = new ApiClient();
+
+        if (!client.isLoggedIn()) {
+            const userAnchors = Array.from(this.getElementsByClassName("nav-user")).map(user => user.querySelector('a'));
+
+            userAnchors.forEach(userAnchor => {
+                userAnchor.textContent = 'Zaloguj się';
+                userAnchor.href = '/pages/signin.html';
+                    
+                Array.from(this.getElementsByClassName("logout-button")).forEach(logoutButton => {
+                    logoutButton.style.display = 'none';
+                });
+            });
+
+            return;
+        }
+
+        client.fetchUserInfo().then(userInfo => {
             const userAnchors = Array.from(this.getElementsByClassName("nav-user")).map(user => user.querySelector('a'));
 
             userAnchors.forEach(userAnchor => {
                 if (userInfo) {
-                    userAnchor.textContent = userInfo.user.username + " • 150,00 zł";
-                    userAnchor.href = '/pages/profile.html';
-                } else {
-                    userAnchor.textContent = 'Zaloguj się';
-                    userAnchor.href = '/pages/signin.html';
+                    userAnchor.textContent = userInfo.name + " • " + parseFloat(userInfo.balance).toFixed(2) + " zł";
+                    userAnchor.href = '/pages/profile.html';  
+
+                    Array.from(this.getElementsByClassName("logout-button")).forEach(logoutButton => {
+                        logoutButton.style.display = 'flex';
+                    });
                 }
             });
         });
     }
 
-    async #fetchUserInfo() {
-        const session_id = localStorage.getItem('session_id');
-
-        if (!session_id) {
-            return null;
-        }
-
-        try {
-            const apiClient = new ApiClient();
-            const response = await apiClient.get(`user/${session_id}`);
-
-            if (!response.ok) {
-                return null;
-            }
-
-            return await response.json();
-        } catch {
-            return null;
-        }
+    setBagCount(count) {
+        this.#bagCountElement.textContent = count;
     }
 }
 
