@@ -1,0 +1,84 @@
+version: "3.9"
+
+services:
+  frontend:
+    image: nginx:alpine
+    container_name: frontend
+    volumes:
+      - ../frontend:/usr/share/nginx/html:ro
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      - TZ=Europe/Warsaw
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      - backend
+    networks:
+      - public
+      - internal
+
+  backend:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    container_name: backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - TZ=Europe/Warsaw
+    ports:
+      - "5000:5000"
+    networks:
+      - public
+      - internal
+    volumes:
+      - backend-data:/app/data
+
+  db:
+    image: postgres:latest
+    container_name: postgresdb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/initdb:/docker-entrypoint-initdb.d:ro
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+      - TZ=Europe/Warsaw
+    expose:
+      - "5432"
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmindb
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "127.0.0.1:8081:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - public
+
+volumes:
+  db-data:
+  backend-data:
+
+networks:
+  internal:
+    driver: bridge
+    internal: true
+
+  public:
+    driver: bridge

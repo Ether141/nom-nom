@@ -1,4 +1,4 @@
-export const API_URL = 'http://localhost:5005/api/';
+export const API_URL = 'http://localhost:5000/api/';
 
 function concatUrl(endpoint) {
     return `${API_URL.replace(/\/+$/, '')}/${endpoint.replace(/^\/+/, '')}`;

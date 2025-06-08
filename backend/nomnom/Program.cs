@@ -15,13 +15,14 @@ internal class Program
     {
         ApplicationConfiguration config = GetConfiguration();
         WebApplicationBuilder builder = new WebApplicationBuilder();
-        LocationService locationService = new LocationService();
 
         builder.ConfigureLogging(l => l.UseConsole()
                                        .SetConsoleLogFormat("%T %level:\n\t%name => %scope %message")
                                        .UseFile()
                                        .SetFileLogFormat("%D %level [%name] %scope %message")
                                        .EnableColorfulConsole());
+
+        LocationService locationService = new LocationService();
 
         builder.Services
             .AddConfiguration(config)
