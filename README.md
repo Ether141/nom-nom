@@ -37,6 +37,11 @@ During the Docker setup, a database named `nomnom` is automatically created, and
 
 Database dumps and sample files are available in the `docker` directory.
 
+In order to start application, just run this command inside `docker` directory:
+```sh
+docker compose up --build
+```
+
 ---
 
 ## 🌐 Access Information:
@@ -58,7 +63,7 @@ Database dumps and sample files are available in the `docker` directory.
 
 ### PgAdmin:
 
-* URL: [http://localhost:5050](http://localhost:8081)
+* URL: [http://localhost:8081](http://localhost:8081)
 * **Email:** `admin@example.com`
 * **Password:** `admin`
 
