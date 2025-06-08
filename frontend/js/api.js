@@ -1,5 +1,4 @@
-//const API_URL = 'http://localhost:8080/api/v1/';
-const API_URL = 'https://273d5b7e-1034-4436-bdf6-d015b611e581.mock.pstmn.io/api/';
+export const API_URL = 'http://localhost:5005/api/';
 
 function concatUrl(endpoint) {
     return `${API_URL.replace(/\/+$/, '')}/${endpoint.replace(/^\/+/, '')}`;
@@ -7,31 +6,79 @@ function concatUrl(endpoint) {
 
 export default class ApiClient {
     async get(endpoint) {
+        return await fetch(concatUrl(endpoint), {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    }
+
+    async post(endpoint, data, credentials = false) {
+        return await fetch(concatUrl(endpoint), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: credentials ? 'include' : undefined
+        });
+    }
+
+    async put(endpoint, data, credentials = false) {
+        return await fetch(concatUrl(endpoint), {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: credentials ? 'include' : undefined
+        });
+    }
+
+    async delete(endpoint, credentials = false) {
+        return await fetch(concatUrl(endpoint), {
+            method: 'DELETE',
+            credentials: credentials ? 'include' : undefined
+        });
+    }
+
+    isLoggedIn() {
+        const session_id = localStorage.getItem('sessionId');
+        return session_id !== null && session_id !== undefined && session_id !== '';
+    }
+
+    async fetchUserInfo() {
+        if (!this.isLoggedIn()) {
+            return null;
+        }
+
         try {
-            return await fetch(concatUrl(endpoint), {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-        } catch (error) {
-            console.error('GET request error:', error);
-            throw error;
+            const response = await this.post(`user/get`, null, true);
+
+            if (!response.ok) {
+                return null;
+            }
+
+            return await response.json();
+        } catch {
+            return null;
         }
     }
 
-    async post(endpoint, data) {
+    async logout() {
+        if (!this.isLoggedIn()) {
+            return null;
+        }
+
         try {
-            return await fetch(concatUrl(endpoint), {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+            const response = await this.post(`user/logout`, null, true);
+
+            if (response.ok) {
+                localStorage.removeItem('sessionId');
+            }
         } catch (error) {
-            console.error('POST request error:', error);
-            throw error;
+            console.error('Logout failed:', error);
         }
     }
 }
