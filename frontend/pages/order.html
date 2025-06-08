@@ -41,20 +41,20 @@
             <div id="additional-info">
                 <h2>Dodatkowe informacje</h2>
 
-                <textarea rows="2" placeholder="Dodaj dodatkowe informacje do zamówienia"></textarea>
+                <textarea id="comment" rows="2" placeholder="Dodaj dodatkowe informacje do zamówienia"></textarea>
             </div>
 
             <div id="payment-method">
                 <h2>Metoda płatności</h2>
 
                 <div class="list">
-                    <div class="payment">
+                    <div class="payment selected">
                         <img src="../images/icons/wallet.png" />
                         <span>Mój portfel</span>
-                        <span>100,00 zł</span>
+                        <span id="wallet-balance">0,00 zł</span>
                     </div>
 
-                    <div class="payment selected">
+                    <div class="payment">
                         <img src="../images/icons/blik.png" />
                         <span>BLIK</span>
                     </div>
@@ -85,50 +85,21 @@
             <div id="summary">
                 <h2>Podsumowanie</h2>
                 
-                <div class="list">
-                    <div class="order-product">
-                        <span>Pizza Margherita</span>
-                        <span>42,00 zł</span>
-                    </div>
-                    <div class="order-product-separator"></div>
-                    <div class="order-product">
-                        <span>Burger Grand</span>
-                        <span>35,50 zł</span>
-                    </div>
-                    <div class="order-product-separator"></div>
-                    <div class="order-product">
-                        <span>Pasta Carbonara</span>
-                        <span>28,00 zł</span>
-                    </div>
-                    <div class="order-product-separator"></div>
-                    <div class="order-product">
-                        <span>Caesar Salad</span>
-                        <span>22,00 zł</span>
-                    </div>
-                    <div class="order-product-separator"></div>
-                    <div class="order-product">
-                        <span>Sushi Platter</span>
-                        <span>55,00 zł</span>
-                    </div>
-                    <div class="order-product-separator"></div>
-                    <div class="order-product">
-                        <span>Dostawa</span>
-                        <span>5,99 zł</span>
-                    </div>
-                </div>
+                <div class="list"></div>
 
                 <div class="order-total">
                     <span>Razem:</span>
-                    <span>188,49 zł</span>
+                    <span>0,00 zł</span>
                 </div>
 
                 <div class="btn-container">
-                    <x-button label="Zapłać i zamów"></x-button>
+                    <x-button id="order-button" label="Zapłać i zamów"></x-button>
                 </div>
             </div>
         </div>
     </main>
 
+    <x-popup-message></x-popup-message>
     <x-footer></x-footer>
 
     <script type="module" src="../js/components/components.js"></script>
