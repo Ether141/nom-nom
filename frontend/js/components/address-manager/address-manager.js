@@ -1,4 +1,5 @@
 import ApiClient from "../../api.js";
+import PopupMessage from "../popup-message/popup-message.js";
 
 const addressCardTemplate = document.createElement('template');
 
@@ -12,7 +13,8 @@ addressCardTemplate.innerHTML = `
 `;
 
 class Address {
-    constructor(name, street, city, postalCode, phone) {
+    constructor(id, name, street, city, postalCode, phone) {
+        this.id = id;
         this.name = name;
         this.street = street;
         this.city = city;
@@ -102,24 +104,29 @@ export default class AddressManager extends HTMLElement {
     }
 
     async #loadAddresses() {
-        const apiClient = new ApiClient();
+        const client = new ApiClient();
 
         try {
-            const response = await apiClient.get('/user/addresses');
+            const response = await client.post("address/get", null, true).then((response) => {
+                if (response.ok) {
+                    response.json().then((addresses) => {
+                        const list = this.shadowRoot.querySelector(".list");
+                        list.querySelectorAll(".address").forEach(address => address.remove());
+                        this.#addresses = [];
 
-            if (response.ok) {
-                const addresses = await response.json();
+                        addresses.forEach(({ id, name, street, city, postalCode, phoneNumber }) => {
+                            const address = new Address(id, name, street, city, postalCode, phoneNumber);
+                            this.#addresses.push(address);
+                            this.#createAddressCard(name, street, city, postalCode, phoneNumber);
+                        });
+                    });
 
-                addresses.addresses.forEach(({ name, street, city, postalCode, phone }) => {
-                    const address = new Address(name, street, city, postalCode, phone);
-                    this.#addresses.push(address);
-                    this.#createAddressCard(name, street, city, postalCode, phone);
-                });
-            } else {
-                console.error('Failed to load addresses:', response.statusText);
-            }
+                } else {
+                    PopupMessage.instance.showPopup("Wystąpił nieznany błąd. Spróbuj ponownie później.", "error");
+                }
+            });
         } catch (error) {
-            console.error('Error fetching addresses:', error);
+            PopupMessage.instance.showPopup("Wystąpił nieznany błąd. Spróbuj ponownie później.", "error");
         }
     }
 
@@ -140,30 +147,45 @@ export default class AddressManager extends HTMLElement {
         valid = this.#validatePhone() && valid;
 
         if (valid) {
+            const client = new ApiClient();
+
             const name = this.addressNameInput.value.trim();
             const street = this.streetInput.value.trim();
             const city = this.cityInput.value.trim();
             const postalCode = this.postalCodeInput.value.trim();
             const phone = this.phoneInput.value.trim();
-            
-            if (this.#editing) {
-                const selectedAddress = this.shadowRoot.querySelector(".selected");
 
-                if (selectedAddress) {
-                    selectedAddress.querySelector('#address-name').textContent = name;
-                    selectedAddress.querySelector('#street').textContent = street;
-                    selectedAddress.querySelector('#city').textContent = `${postalCode} ${city}`;
-                    selectedAddress.querySelector('#phone').textContent = phone;
+            if (!this.#editing) {
+                const data = { name, street, city, postalCode, phoneNumber: phone };
 
-                    const index = this.#addresses.findIndex(address => address.name === name);
-                    this.#addresses[index] = new Address(name, street, city, postalCode, phone);
-                }
+                client.put("address", data, true).then((response) => {
+                    if (response.ok) {
+                        this.#loadAddresses();
+                        this.#showHideAddressEdit(false);
+                        PopupMessage.instance.showPopup("Adres został dodany.", "success");
+                    } else {
+                        PopupMessage.instance.showPopup("Wystąpił nieznany błąd. Spróbuj ponownie później.", "error");
+                    }
+                }).catch((error) => {
+                    PopupMessage.instance.showPopup("Wystąpił nieznany błąd. Spróbuj ponownie później.", "error");
+                });
             } else {
-                const address = new Address(name, street, city, postalCode, phone);
-                this.#addresses.push(address);
-                this.#createAddressCard(name, street, city, postalCode, phone);
+                const name = this.shadowRoot.querySelector(".selected").querySelector('#address-name').textContent;
+                const address = this.#addresses.find(address => address.name === name);
+                const data = { id: address.id, name, street, city, postalCode, phoneNumber: phone };
+
+                client.post("address", data, true).then((response) => {
+                    if (response.ok) {
+                        this.#loadAddresses();
+                        this.#showHideAddressEdit(false);
+                        PopupMessage.instance.showPopup("Adres został zedytowany.", "success");
+                    } else {
+                        PopupMessage.instance.showPopup("Wystąpił nieznany błąd. Spróbuj ponownie później.", "error");
+                    }
+                }).catch((error) => {
+                    PopupMessage.instance.showPopup("Wystąpił nieznany błąd. Spróbuj ponownie później.", "error");
+                });
             }
-            this.#showHideAddressEdit(false);
         }
     }
 
@@ -172,9 +194,22 @@ export default class AddressManager extends HTMLElement {
 
         if (selectedAddress) {
             const name = selectedAddress.querySelector('#address-name').textContent;
-            this.#addresses = this.#addresses.filter(address => address.name !== name);
-            selectedAddress.remove();
-            this.#showHideAddressEdit(false);
+            const address = this.#addresses.find(address => address.name === name);
+
+            const client = new ApiClient();
+            const data = { addressId: address.id };
+
+            client.delete(`address/${address.id}`, true).then((response) => {
+                if (response.ok) {
+                    this.#loadAddresses();
+                    this.#showHideAddressEdit(false);
+                    PopupMessage.instance.showPopup("Adres został usunięty.", "success");
+                } else {
+                    PopupMessage.instance.showPopup("Wystąpił nieznany błąd. Spróbuj ponownie później.", "error");
+                }
+            }).catch((error) => {
+                PopupMessage.instance.showPopup("Wystąpił nieznany błąd. Spróbuj ponownie później.", "error");
+            });
         }
     }
 
@@ -310,7 +345,7 @@ export default class AddressManager extends HTMLElement {
     }
 
     #validatePhone() {
-        const value = this.phoneInput.value.trim();
+        const value = this.phoneInput.value.replace(/\s+/g, '');
 
         const pattern = /^\+?\d{9,15}$/;
         if (!value) {
