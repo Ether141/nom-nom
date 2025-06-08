@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <x-navbar options="background"></x-navbar>
+    <x-navbar options="background back-button"></x-navbar>
 
     <main>
         <div id="main-content">
@@ -27,8 +27,7 @@
                 <x-claim-input lock inputId="name" type="text" label="Imię"
                     iconSrc="../images/icons/user.png" value="Bartek"></x-claim-input>
 
-                <h3>Zmień adres e-mail</h3>
-                <x-claim-input inputId="email" type="email" label="Adres e-mail"
+                <x-claim-input lock inputId="email" type="email" label="Adres e-mail"
                     iconSrc="../images/icons/email.png" value="example@gmail.com"></x-claim-input>
 
                 <h3>Zmień hasło</h3>
@@ -46,6 +45,16 @@
                 </div>
             </div>
 
+            <div id="orders">
+                <h2>Moje zamówienia</h2>
+                
+                <div id="progress-indicator-container">
+                    <x-progress-indicator overlay-color="transparent" overlay-width="100%" overlay-height="100%" id="progress-indicator"></x-progress-indicator>
+                </div>
+
+                <div id="orders-list"></div>
+            </div>
+
             <div id="addresses">
                 <h2>Adresy</h2>
 
@@ -58,7 +67,7 @@
                 <div class="wallet-info">
                     <div>
                         <img src="../images/icons/wallet.png" />
-                        <span>150,00 zł</span>
+                        <span id="wallet-balance">150,00 zł</span>
                     </div>
                     <div class="btn-container">
                         <x-button id="btn-add-funds" type="primary" label="Dodaj środki"></x-button>
