@@ -1,9 +1,16 @@
 export default class RestaurantCard extends HTMLElement {
     constructor() {
         super();
+    }
 
+    connectedCallback() {
+        this.render();
+    }
+
+    render() {
         this.cssFile = '/js/components/restaurant-card/restaurant-card.css';
 
+        this.restaurantId = this.getAttribute('restaurant-id') || '1';
         this.restaurantName = this.getAttribute('restaurant-name') || 'Nazwa';
         this.restaurantImage = this.getAttribute('restaurant-image') || '';
         this.restaurantTags = this.getAttribute('tags') || '';
@@ -15,7 +22,7 @@ export default class RestaurantCard extends HTMLElement {
 
         this.innerHTML = `
             <link rel="stylesheet" href="${this.cssFile}">
-            <div class="restaurant-card">
+            <div role="button" class="restaurant-card" onclick="location.href='/pages/restaurant.html?restaurantId=${this.restaurantId}'">
                 <img src="${this.restaurantImage}"/>
                 <div>
                     <h2 class="poppins-medium">${this.restaurantName}</h2>

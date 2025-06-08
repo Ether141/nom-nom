@@ -36,6 +36,7 @@
 
 .restaurant-card:hover {
     box-shadow: #00000054 0px 0px 10px;
+    cursor: pointer;
 }
 
 .restaurant-card > div {
