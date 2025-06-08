@@ -1,5 +1,5 @@
 import ApiClient from "./api.js";
-import { ERR_ENTER_EMAIL, ERR_ENTER_PASSWORD, ERR_GENERAL } from "./resources.js";
+import { ERR_ENTER_EMAIL, ERR_ENTER_PASSWORD, ERR_GENERAL, ERR_INVALID_EMAIL, ERR_INVALID_INPUT } from "./resources.js";
 
 const emailInput = document.querySelector('x-claim-input[inputId="email"]');
 const passwordInput = document.querySelector('x-claim-input[inputId="password"]');
@@ -9,7 +9,7 @@ const errorMessage = document.getElementById("error-message");
 emailInput.addEventListener("blur", validateEmail);
 passwordInput.addEventListener("blur", validatePassword);
 
-loginBtn.addEventListener("onclick", function() {
+const login = () => {
     hideError();
 
     const email = emailInput.value;
@@ -28,26 +28,35 @@ loginBtn.addEventListener("onclick", function() {
     client.post('user/login', {
         email: email,
         password: password
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = "/index.html";
+    }, true)
+        .then(response => {
+            if (response.ok) {
+                window.location.href = "/index.html";
 
-            response.json().then(json => {
-                const sessionId = json.session_id;
-                localStorage.setItem("session_id", sessionId);
-            });
-        } else {
+                response.json().then(json => {
+                    const sessionId = json.sessionId;
+                    localStorage.setItem("sessionId", sessionId);
+                });
+            } else {
+                unlockInput();
+                response.json().then(json => {
+                    showError(ERR_INVALID_INPUT);
+                });
+            }
+        })
+        .catch(error => {
             unlockInput();
-            response.json().then(json => {
-                showError(json.message);
-            });
-        }
-    })
-    .catch(error => {
-        unlockInput();
-        showError(ERR_GENERAL);
-    });
+            showError(ERR_GENERAL);
+        });
+};
+
+loginBtn.addEventListener("onclick", login);
+
+// when user press enter, click the login button
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        login();
+    }
 });
 
 function lockInput() {
