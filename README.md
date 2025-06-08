@@ -1,7 +1,67 @@
-# nom-nom
+# 🍽️ Nom-nom App – Online Food Ordering with Delivery
 
-## Overview
+The **Nom-nom App** allows users to order food online from selected restaurants and have it delivered to a specified address. Restaurants are filtered based on the delivery address provided by the user.
 
-A project of a web application for ordering food with online delivery. 
+The primary goal of the project is simplicity, relying on basic technologies without additional frameworks or preprocessors. The frontend is built purely with **HTML, CSS, and vanilla JavaScript**, while the backend is powered by a lightweight, custom-made framework called **blink-http**, developed in **C# with .NET 9**.
 
-This is an application created as a college project. Basic technologies such as HTML, CSS, JavaScript, Docker, PostgreSQL, C# were used. The HTTP server was implemented from scratch in C#, without using ready-made frameworks.
+---
+
+## 📦 Modules:
+
+* **Frontend:** Web application built with pure JavaScript, HTML, and CSS.
+* **Backend:** REST API created with .NET 9 and blink-http framework.
+* **Database:** PostgreSQL database.
+
+---
+
+## 🚀 Requirements:
+
+To run the application, Docker and Docker Compose are sufficient. However, manual deployment is possible. For manual deployment, you will need:
+
+* `.NET 9`
+* `PostgreSQL`
+* A simple HTTP server to serve the frontend files.
+
+---
+
+## 🐳 Docker Setup:
+
+The simplest way to get started is by using the provided `docker-compose.yml` file. It creates four containers:
+
+* **Frontend:** Served by an Nginx web server.
+* **Backend:** Runs on a .NET 9 environment providing API services.
+* **PostgresDB:** PostgreSQL database container for data persistence.
+* **PgAdmin:** Web-based graphical interface for managing the PostgreSQL database.
+
+During the Docker setup, a database named `nomnom` is automatically created, and example data is imported. After starting Docker Compose, the app will be immediately ready for testing.
+
+Database dumps and sample files are available in the `docker` directory.
+
+---
+
+## 🌐 Access Information:
+
+### Frontend:
+
+* URL: [http://localhost:8080](http://localhost:8080)
+
+### Backend:
+
+* URL: [http://localhost:5000](http://localhost:5000)
+* Supports CORS for `localhost:8080`
+
+### PostgreSQL Database:
+
+* Accessible only within Docker network
+* **Username:** `postgres`
+* **Password:** `password`
+
+### PgAdmin:
+
+* URL: [http://localhost:5050](http://localhost:8081)
+* **Email:** `admin@example.com`
+* **Password:** `admin`
+
+---
+
+Feel free to customize and adjust paths or ports as necessary!
