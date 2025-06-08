@@ -21,13 +21,13 @@
     <main>
         <div id="main-content">
             <div id="restaurant">
-                <img id="banner" src="../images/graphics/banners/pizza.jpg" />
-                <span id="restaurant-title">Restauracja Włoska Pizza</span>
+                <img id="banner" />
+                <span id="restaurant-title"></span>
             </div>
 
             <div id="status">
-                <div id="timer" class="status-icon">
-                    <span>47</span>
+                <div id="timer" class="status-icon" style="display: none;">
+                    <span id="timer-minutes">0</span>
                     <span>min</span>
                 </div>
 
@@ -48,22 +48,17 @@
 
                 <div class="details-row">
                     <span>Numer zamówienia</span>
-                    <span>9823</span>
+                    <span id="order-num">9823</span>
                 </div>
 
                 <div class="details-row">
                     <span>Godzina zamówienia</span>
-                    <span>12:45</span>
+                    <span id="order-time">12:45</span>
                 </div>
 
                 <div class="details-row">
                     <span>Opłacono zamówienie</span>
-                    <span>145,49 zł</span>
-                </div>
-
-                <div class="details-row">
-                    <span>Metoda płatności</span>
-                    <span>BLIK</span>
+                    <span id="order-price">145,49 zł</span>
                 </div>
             </div>
         </div>
@@ -72,6 +67,7 @@
     <x-footer></x-footer>
 
     <script type="module" src="../js/components/components.js"></script>
+    <script type="module" src="../js/status.js"></script>
 </body>
 
 </html>
