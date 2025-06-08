@@ -8,6 +8,19 @@ The primary goal of the project is simplicity, relying on basic technologies wit
 
 ---
 
+## 🌟 Key Features:
+
+* **Restaurant search:** Find restaurants within a specified area around your delivery address.
+* **Filtering options:** Easily filter restaurants by name, tags, or cuisine.
+* **User accounts:** Create and manage user profiles.
+* **Multiple delivery addresses:** Store and manage multiple delivery addresses.
+* **Order tracking:** Real-time tracking of your orders.
+* **Multiple concurrent orders:** Place and manage several orders at once.
+* **Saved carts:** Keep separate carts saved per restaurant and user.
+
+
+---
+
 ## 📦 Modules:
 
 * **Frontend:** Web application built with pure JavaScript, HTML, and CSS.
