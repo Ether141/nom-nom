@@ -1,0 +1,107 @@
+#bag {
+    width: 100%;
+    max-width: 100%;
+    height: fit-content;
+    position: sticky;
+    top: -1px;
+    padding-left: 20px;
+}
+
+#bag > div {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#bag > span {
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.bag-item {
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: solid 1px var(--border-color);
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.bag-item > div {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.bag-item-name {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.bag-item-price {
+    font-weight: 300;
+}
+
+#bag-summary-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px var(--border-color);
+}
+
+#bag-summary-details div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+    box-sizing: border-box;
+}
+
+#bag-summary-details div span:first-child {
+    font-weight: 300;
+}
+
+#bag-summary-details div span:last-child {
+    font-weight: 500;
+}
+
+#bag-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+#bag-summary-label {
+    font-weight: 300;
+}
+
+#bag-summary-price {
+    font-weight: 500;
+}
+
+.delete-item-btn {
+    background: var(--accent);
+    border: none;
+    color: var(--text-color-light);
+    padding: 3px;
+    margin: 0 0 0 75%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.25s ease;
+}
+
+.delete-item-btn:hover {
+    background: var(--dark-accent);
+    cursor: pointer;
+    margin-left: 78%;
+}
