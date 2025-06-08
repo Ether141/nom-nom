@@ -64,4 +64,30 @@ Database dumps and sample files are available in the `docker` directory.
 
 ---
 
-Feel free to customize and adjust paths or ports as necessary!
+## ⚙️ API Server Configuration
+
+Configure the API server using the configuration file located at `backend/config.cfg`.
+
+```ini
+[server]
+prefixes = http://*:5000/                                   # URL where the server listens
+route_prefix = api                                          # Routing prefix
+content_path = /app/data                                    # Path to content directory (e.g., restaurant banners)
+
+[sql]
+hostname = db                                               # Database server address
+username = postgres                                         # Database username
+password = password                                         # Database user password
+database = nomnom                                           # Database name
+logging_on = false                                          # Enable or disable SQL query logging
+
+[nomnom]
+maximal_distance = 20                                       # Maximum distance in kilometers for restaurant search
+
+[cors]
+origin = http://localhost:8080                              # Allowed CORS origins
+headers = content-type, content-length                      # Allowed CORS headers
+credentials = true                                          # Allow CORS credentials
+methods = POST, GET, DELETE, PUT                            # Allowed CORS methods
+```
+
