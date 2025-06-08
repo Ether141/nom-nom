@@ -7,4 +7,25 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="BlinkDatabase">
+      <HintPath>..\..\blink-http\BlinkHttp\bin\Release\net9.0\publish\BlinkDatabase.dll</HintPath>
+    </Reference>
+    <Reference Include="BlinkDatabase.PostgreSql">
+      <HintPath>..\..\blink-http\BlinkDatabase.PostgreSql\bin\Release\net9.0\publish\BlinkDatabase.PostgreSql.dll</HintPath>
+    </Reference>
+    <Reference Include="BlinkHttp">
+      <HintPath>..\..\blink-http\BlinkHttp\bin\Release\net9.0\publish\BlinkHttp.dll</HintPath>
+    </Reference>
+    <Reference Include="BlinkHttp.Logging">
+      <HintPath>..\..\blink-http\BlinkHttp\bin\Release\net9.0\publish\BlinkHttp.Logging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="config.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
