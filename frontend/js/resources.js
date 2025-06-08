@@ -1,4 +1,5 @@
 export const ERR_GENERAL = "Wystąpił błąd, spróbuj ponownie później.";
+export const ERR_INVALID_INPUT = "Wprowadzono nieprawidłowe dane.";
 export const ERR_ENTER_EMAIL = "Wprowadź adres e-mail.";
 export const ERR_ENTER_PASSWORD = "Wprowadź hasło.";
 export const ERR_ERRORS = "Wystąpiły błędy w formularzu. Proszę poprawić błędy i spróbować ponownie.";
