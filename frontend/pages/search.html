@@ -22,65 +22,35 @@
 
     <main>
         <div id="main-content">
-            <section id="filters-section">
-                <h3>126 lokali</h3>
-
-                <div class="filter">
-                    <span>Otwarte teraz</span>
-                    <x-toggle name="cbx-open-now"></x-toggle>
-                </div>
-
-                <div class="filter">
-                    <span>Darmowa dostawa</span>
-                    <x-toggle name="cbx-free-delivery"></x-toggle>
-                </div>
-
-                <div class="filter">
-                    <span>Promocje</span>
-                    <x-toggle name="cbx-special-offer"></x-toggle>
-                </div>
-            </section>
-
             <section id="search-section">
+                <div id="address-input-container">
+                    <x-address-input id="address-input" placeholder="Wprowadź adres dostawy" class="poppins-medium"></x-address-input>
+                </div>
+
                 <div id="top-bar">
                     <div class="search-container" id="search-bar-container">
                         <img class="search-icon" src="../images/icons/search.png" />
-                        <input type="text" class="search-input" placeholder="Produkt, restauracja, kuchnia..." />
+                        <input id="search-bar" type="text" class="search-input" placeholder="Produkt, restauracja, kuchnia..." />
                     </div>
                     <div id="sort-container">
-                        <span class="poppins-medium">Sortuj według</span>
-                        <x-dropdown>
-                            <option value="0">Najpopularniejsze</option>
-                            <option value="1">Najnowsze</option>
+                        <x-dropdown id="sort-dropdown">
+                            <option value="0">Alfabetycznie</option>
+                            <option value="1">Najpopularniejsze</option>
                             <option value="2">Najlepiej oceniane</option>
                         </x-dropdown>
                     </div>
                 </div>
 
-                <div id="address-bar">
-                    <div>
-                        <img src="../images/icons/map-pin.png"/>
-                        <span>Kraków, ul. Warszawska 4A/12</span>
-                    </div>
+                <div id="progress-indicator-container" style="display: block;">
+                    <x-progress-indicator overlay-color="transparent" overlay-width="100%" overlay-height="100%" id="progress-indicator"></x-progress-indicator>
                 </div>
 
-                <div id="restaurants-list">
-                    <x-restaurant-card restaurant-name="Restauracja 1" restaurant-image="../images/graphics/burgers.jpg"
-                        tags="Polska, Domowa" rating="4.5" rating-number="20" waiting-time="30-45" delivery-price="5"
-                        min-price="40"></x-restaurant-card>
-
-                    <x-restaurant-card restaurant-name="Restauracja 2" restaurant-image="../images/graphics/restaurant2.jpg"
-                        tags="Włoska, Pizza" rating="4.2" rating-number="15" waiting-time="20-35" delivery-price="3"
-                        min-price="30"></x-restaurant-card>
-
-                    <x-restaurant-card restaurant-name="Restauracja 3" restaurant-image="../images/graphics/sushi.jpg"
-                        tags="Japońska, Sushi" rating="4.8" rating-number="50" waiting-time="40-60" delivery-price="10"
-                        min-price="50"></x-restaurant-card>
-
-                    <x-restaurant-card restaurant-name="Restauracja 4" restaurant-image="../images/graphics/restaurant1.jpg"
-                        tags="Japońska, Sushi" rating="4.0" rating-number="50" waiting-time="40-60" delivery-price="10"
-                        min-price="50"></x-restaurant-card>
+                <div id="not-found-container" style="display: none;">
+                    <img src="../images/icons/sad.png" alt="Not Found Icon" />
+                    <h2>Nie znaleziono żadnej restauracji,</br>która spełnia Twoje kryteria...</h2>
                 </div>
+
+                <div id="restaurants-list"></div>
             </section>
         </div>
     </main>

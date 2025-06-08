@@ -7,43 +7,9 @@ main {
 }
 
 #main-content {
-    max-width: 1300px;
-    width: 1300px;
+    max-width: 800px;
+    width: 800px;
     flex: 1;
-    display: grid;
-    grid-template-columns: 2fr 7fr;
-    grid-template-rows: 1fr;
-}
-
-#filters-section {
-    margin-top: 80px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    padding: 15px 15px 0 15px;
-}
-
-#filters-section > h3 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    width: 100%;
-}
-
-.filter {
-    width: 100%;
-    height: 30px;
-    font-size: 0.9em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
 }
 
 #search-section {
@@ -81,37 +47,9 @@ main {
     height: 100%;
 }
 
-#address-bar {
-    width: 100%;
-    height: 40px;
-}
-
-#address-bar > div {
-    background-color: var(--border-color);
-    border-radius: 30px;
-
-    width: calc(100% - 20px);
-    height: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
-    box-sizing: border-box;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-}
-
-#address-bar > div > img {
-    width: 16px;
-    height: 16px;
-    margin-left: 15px;
-}
-
-#address-bar > div > span {
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
+#address-input-container {
+    padding: 15px;
+    width: 90%;
 }
 
 #restaurants-list {
@@ -126,6 +64,40 @@ main {
 
 x-restaurant-card {
     width: calc(100% - 20px);
+}
+
+#progress-indicator-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#not-found-container {
+    margin: 75px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+#not-found-container > img {
+    width: 150px;
+    height: 150px;
+}
+
+#not-found-container > h2 {
+    font-size: 24px;
+    color: var(--text-color);
+    text-align: center;
+    font-weight: 500;
+    font-family: Poppins, sans-serif;
 }
 
 @media screen and (max-width: 1100px) {
