@@ -1,3 +1,6 @@
+import ApiClient from "../../api.js";
+import PopupMessage from "../popup-message/popup-message.js"
+
 export default class WalletPay extends HTMLElement {
     constructor() {
         super();
@@ -44,7 +47,7 @@ export default class WalletPay extends HTMLElement {
                     </div>
                 </div>
                 
-                <div id="blik-container">
+                <div id="blik-container" style="display: none;">
                     <div>
                         <x-claim-input id="blik-value" inputId="blik-value" label="Kwota"></x-claim-input>
                         <x-claim-input id="blik-input" inputId="blik-input" label="Kod BLIK"></x-claim-input>
@@ -79,19 +82,37 @@ export default class WalletPay extends HTMLElement {
             });
         });
 
-        this.shadowRoot.querySelector("#btn-use-blik").addEventListener("click", () => {
+        this.shadowRoot.getElementById("btn-use-blik").addEventListener("click", () => {
             const result = this.#validateInputs();
 
             if (!result) return;
 
-            const blikInput = this.shadowRoot.querySelector("#blik-input").value;
-
-            console.log(`BLIK code: ${blikInput}`);
             this.shadowRoot.querySelector("#progress-indicator").show();
+            
+            const client = new ApiClient();
 
-            setTimeout(() => {
-                this.shadowRoot.querySelector("#progress-indicator").hide();
-            }, 3000);
+            client.post("user/add-funds", { amount: result.blikValue }, true)
+                .then(response => {
+                    if (response.ok) {
+                        response.json().then(json => {
+                            const walletBalanceSpan = document.getElementById("wallet-balance");
+                            walletBalanceSpan.innerText = parseFloat(json.balance).toFixed(2) + " zł";
+                            PopupMessage.instance.showPopup("Doładowanie konta powiodło się.", "success");
+
+                            document.getElementsByTagName("x-navbar")[0].refreshUser();
+                            this.shadowRoot.querySelector("#blik-value").value = "";
+                            this.shadowRoot.querySelector("#blik-input").value = "";
+                        });
+                    } else {
+                        PopupMessage.instance.showPopup("Wystąpił błąd, spróbuj ponownie później.", "error");
+                    }
+
+                    this.shadowRoot.querySelector("#progress-indicator").hide();
+                })
+                .catch(error => {
+                    PopupMessage.instance.showPopup("Wystąpił błąd, spróbuj ponownie później.", "error");
+                    this.shadowRoot.querySelector("#progress-indicator").hide();
+                });
         });
 
         this.shadowRoot.querySelector("#blik-value");
