@@ -8,6 +8,7 @@ const emailInput = document.querySelector('x-claim-input[inputId="email"]');
 const passwordInput = document.querySelector('x-claim-input[inputId="password"]');
 const repeatPasswordInput = document.querySelector('x-claim-input[inputId="repeat-password"]');
 const rulesAcceptanceCheckbox = document.querySelector('x-toggle[name="cbx-rules-acceptance"]');
+const offersAcceptanceCheckbox = document.querySelector('x-toggle[name="cbx-offers-acceptance"]');
 const rulesAcceptanceLabel = rulesAcceptanceCheckbox.parentElement.querySelector('span');
 const overlay = document.getElementById("overlay");
 const overlayProgress = document.getElementById("progress");
@@ -44,19 +45,28 @@ document.getElementById("create-account-btn").addEventListener("click", function
     const client = new ApiClient();
     showProgress();
 
-    client.post('user/create', {
-        firstname: nameInput.value.trim(),
+    const data = {
+        name: nameInput.value.trim(),
         email: emailInput.value.trim(),
-        password: passwordInput.value
-    })
+        password: passwordInput.value,
+        rulesAcceptance: rulesAcceptanceCheckbox.checked,
+        offersAcceptance: offersAcceptanceCheckbox.checked
+    };
+
+    client.post('user/create', data)
         .then(response => {
             hideProgress();
 
             if (response.ok) {
+                response.json().then(json => {
+                    console.log(json);
+                });
+
                 showSuccess();
             } else {
                 response.json().then(json => {
-                    showError(json.message);
+                    console.log(json);
+                    showError(ERR_INVALID_INPUT);
                 });
             }
         })
