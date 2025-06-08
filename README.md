@@ -1,3 +1,5 @@
+<img src="frontend/images/logo.png" alt="Nom-nom Logo" width="500"/>
+
 # 🍽️ Nom-nom App – Online Food Ordering with Delivery
 
 The **Nom-nom App** allows users to order food online from selected restaurants and have it delivered to a specified address. Restaurants are filtered based on the delivery address provided by the user.
