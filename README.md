@@ -82,6 +82,10 @@ docker compose up --build
 * **Email:** `admin@example.com`
 * **Password:** `admin`
 
+### Application accounts:
+* **Normal user account:** `example@gmail.com | Password123`
+* **Administartor account:** `admin@example.com | Password123`
+
 ---
 
 ## ⚙️ API Server Configuration
