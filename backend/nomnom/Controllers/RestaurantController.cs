@@ -13,14 +13,14 @@ namespace nomnom.Controllers;
 internal class RestaurantController : Controller
 {
     private readonly IFilesProvider filesProvider;
-    private readonly LocationService locationService;
+    private readonly ILocationService locationService;
     private readonly IRepository<Restaurant> restaurantRepo;
 
     private readonly ILogger logger;
 
     private readonly double maximalDistance;
 
-    public RestaurantController(IFilesProvider filesProvider, LocationService locationService, IRepository<Restaurant> restaurantRepo, IConfiguration configuration, ILogger logger)
+    public RestaurantController(IFilesProvider filesProvider, ILocationService locationService, IRepository<Restaurant> restaurantRepo, IConfiguration configuration, ILogger logger)
     {
         this.filesProvider = filesProvider;
         this.locationService = locationService;

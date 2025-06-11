@@ -25,9 +25,13 @@ internal class User : IUser
     [Column("balance")]
     public decimal Balance { get; set; }
 
+    [Column("role_id")]
+    [Relation("id")]
+    public UserRole Role { get; set; }
+
     string IUser.Id => Id.ToString();
 
     string IUser.Username => Id.ToString();
 
-    string[] IUser.Roles => throw new NotImplementedException();
+    string[] IUser.Roles => [Role.Role ?? ""];
 }

@@ -15,13 +15,15 @@ namespace nomnom.Controllers;
 internal class UserController : Controller
 {
     private readonly IRepository<User> userRepository;
+    private readonly IRepository<UserRole> userRoleRepository;
     private readonly ILogger logger;
     private readonly AuthenticationProvider authenticationProvider;
     private readonly SessionManager authorizer;
 
-    public UserController(IRepository<User> userRepository, IAuthorizer authorizer, IUserInfoProvider userInfoProvider, ILogger logger)
+    public UserController(IRepository<User> userRepository, IRepository<UserRole> userRoleRpository, IAuthorizer authorizer, IUserInfoProvider userInfoProvider, ILogger logger)
     {
         this.userRepository = userRepository;
+        this.userRoleRepository = userRoleRpository;
         this.authorizer = (SessionManager)authorizer;
         authenticationProvider = new AuthenticationProvider(userInfoProvider);
         this.logger = logger;
@@ -45,6 +47,9 @@ internal class UserController : Controller
         dto.Password = hashedPassword;
 
         User user = new UserMapper().Map(dto);
+        UserRole userRole = userRoleRepository.SelectSingle(r => r.Role == UserRole.UserRoleName)!;
+
+        user.Role = userRole;
         userRepository.Insert(user);
 
         logger.Info($"User created successfully. ID: {user.Id}, Email: {user.Email}");
@@ -92,7 +97,7 @@ internal class UserController : Controller
     {
         logger.Debug($"Fetching user info for user: {User?.Id}");
         User user = userRepository.SelectSingle(u => u.Id == int.Parse(User!.Id))!;
-        return JsonResult.FromObject(new { user.Id, user.Name, user.Balance });
+        return JsonResult.FromObject(new { user.Id, user.Name, user.Balance, user.Role.Role });
     }
 
     [Authorize]
