@@ -24,4 +24,19 @@ public class FilesProvider : IFilesProvider
 
         return File.ReadAllBytes(path);
     }
+
+    public bool FileExists(string path) => File.Exists(Path.Combine(MainPath, path));
+
+    public void SaveFile(string path, byte[] data)
+    {
+        var fullPath = Path.Combine(MainPath, path);
+        var directory = Path.GetDirectoryName(fullPath);
+
+        if (directory is not null && !Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
+        File.WriteAllBytes(fullPath, data);
+    }
 }
