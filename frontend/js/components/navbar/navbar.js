@@ -22,8 +22,13 @@ export default class Navbar extends HTMLElement {
                 </div>
 
                 <div class="nav-button">
-                    <img src="/images/icons/key.png"/>
+                    <img src="/images/icons/restaurant.png"/>
                     <a role="button" href="#">Dodaj swoją restaurację</a>
+                </div>
+
+                <div class="nav-button manager-button" style="display: none;">
+                    <img src="/images/icons/manager.png"/>
+                    <a role="button" href="/pages/restaurant-list.html">Zarządzaj</a>
                 </div>
 
                 <div class="nav-button logout-button" style="display: none;">
@@ -89,6 +94,11 @@ export default class Navbar extends HTMLElement {
                     <a role="button" href="#">Dodaj swoją restaurację</a>
                 </div>
 
+                <div class="nav-button manager-button" style="display: none;">
+                    <img src="/images/icons/manager.png"/>
+                    <a role="button" href="/pages/restaurant-list.html">Zarządzaj</a>
+                </div>
+
                 <div class="nav-button logout-button" style="display: none;">
                     <img src="/images/icons/logout.png"/>
                     <a role="button">Wyloguj się</a>
@@ -98,6 +108,24 @@ export default class Navbar extends HTMLElement {
     }
 
     connectedCallback() {
+        const bagBtn = this.querySelector('#bag-btn');
+        const bag = document.querySelector('x-bag');
+        const client = new ApiClient();
+
+        client.fetchUserInfo()
+            .then(userInfo => {
+                if (userInfo != null && bag != null) {
+                    bagBtn.style.display = 'fles';
+                }
+
+                if (userInfo != null && userInfo.role === 'admin') {
+                    const managerButtons = Array.from(this.getElementsByClassName("manager-button"));
+                    managerButtons.forEach(button => {
+                        button.style.display = 'flex';
+                    });
+                }
+            });
+
         if (this.minimal) {
             return;
         }
@@ -134,12 +162,7 @@ export default class Navbar extends HTMLElement {
             });
         });
 
-        const bagBtn = this.querySelector('#bag-btn');
-        const bag = document.querySelector('x-bag');
-
-        if (bag == null) {
-            bagBtn.style.display = 'none';
-        } else {
+        if (bag != null) {
             bagBtn.addEventListener('click', () => {
                 if (bag == null) {
                     return;

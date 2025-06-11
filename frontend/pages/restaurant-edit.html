@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomNom.pl - Edytuj Restaurację</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/restaurant-edit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <x-navbar options="background back-button"></x-navbar>
+
+    <main>
+        <div id="main-content">
+            <div id="progress-indicator-container">
+                <x-progress-indicator overlay-color="transparent" overlay-width="100%" overlay-height="100%" id="progress-indicator"></x-progress-indicator>
+            </div>
+
+            <div id="banner-container" style="display: none;">
+                <img id="banner-image" src="/images/graphics/banners/pizza.jpg" alt="Banner Restauracji">
+                <div id="banner-text"></div>
+            </div>
+
+            <div style="display: none;">
+                <h2>Podstawowe informacje</h2>
+
+                <x-claim-input inputId="name" type="text" label="Nazwa Restauracji" iconSrc="../images/icons/user.png"></x-claim-input>
+                <x-claim-input inputId="address" type="text" label="Adres" iconSrc="../images/icons/map-pin.png"></x-claim-input>
+                <x-claim-input inputId="tags" type="text" label="Tagi"></x-claim-input>
+            </div>
+
+            <div style="display: none;">
+                <h2>Dostawa</h2>
+
+                <x-claim-input inputId="delivery-time" type="text" label="Czas Dostawy (min-max)" iconSrc="../images/icons/clock.png"></x-claim-input>
+                <x-claim-input inputId="delivery-price" type="number" label="Koszt Dostawy (zł)"></x-claim-input>
+                <x-claim-input inputId="min-price" type="number" label="Minimalna Kwota Zamówienia (zł)"></x-claim-input>
+            </div>
+
+            <div style="display: none;">
+                <h2>Banner</h2>
+
+                <x-claim-input inputId="banner" type="file" label="Wybierz plik" iconSrc="../images/icons/key.png"></x-claim-input>
+            </div>
+
+            <div style="display: none;">
+                <h2>Menu</h2>
+
+                <div id="menu-container">
+                    
+                </div>
+
+                <div class="btn-container">
+                    <x-button id="btn-add-section" type="primary" label="Dodaj kategorię"></x-button>
+                    <x-button id="btn-save-changes" type="primary" label="Zapisz zmiany"></x-button>
+                </div>
+            </div>
+
+            <div style="display: none;" id="delete-restaurant-container">
+                <h2>Usuń restaurację i wszystkie dane</h2>
+                <x-button id="btn-delete-restaurant" type="primary" label="Usuń"></x-button>
+            </div>
+        </div>
+    </main>
+
+    <x-footer></x-footer>
+    <x-popup-message></x-popup-message>
+
+    <script type="module" src="../js/components/components.js"></script>
+    <script type="module" src="../js/components/restaurant-menu-section/restaurant-menu-section.js"></script>
+    <script type="module" src="../js/restaurant-edit.js"></script>
+</body>
+
+</html>
