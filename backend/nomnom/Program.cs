@@ -22,14 +22,12 @@ internal class Program
                                        .SetFileLogFormat("%D %level [%name] %scope %message")
                                        .EnableColorfulConsole());
 
-        LocationService locationService = new LocationService();
-
         builder.Services
             .AddConfiguration(config)
             .AddPostgreSql()
             .AddSingleton<IFilesProvider, FilesProvider>()
             .AddSingleton<IUserInfoProvider, UserInfoProvider>()
-            .AddSingleton(locationService)
+            .AddSingleton<ILocationService, LocationService>()
             .AddBackgroundService(new OrdersService(), true);
 
         builder
@@ -46,8 +44,6 @@ internal class Program
 
         WebApplication app = builder.Build();
         await app.Run(args);
-
-        locationService.Dispose();
     }
 
     private static ApplicationConfiguration GetConfiguration()

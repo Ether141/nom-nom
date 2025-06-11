@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace nomnom.Location;
 
-internal class LocationService : IDisposable
+internal class LocationService : ILocationService
 {
     private readonly HttpRequestsSender httpRequestsSender = new HttpRequestsSender();
     private static long LastCallTimestamp = 0;
