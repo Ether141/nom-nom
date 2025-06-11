@@ -25,6 +25,14 @@ export default class ApiClient {
         });
     }
 
+    async postFormData(endpoint, formData, credentials = false) {
+        return await fetch(concatUrl(endpoint), {
+            method: 'POST',
+            body: formData,
+            credentials: credentials ? 'include' : undefined
+        });
+    }
+
     async put(endpoint, data, credentials = false) {
         return await fetch(concatUrl(endpoint), {
             method: 'PUT',
