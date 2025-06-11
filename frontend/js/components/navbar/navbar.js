@@ -112,10 +112,12 @@ export default class Navbar extends HTMLElement {
         const bag = document.querySelector('x-bag');
         const client = new ApiClient();
 
+        bagBtn.style.display = 'none';
+
         client.fetchUserInfo()
             .then(userInfo => {
                 if (userInfo != null && bag != null) {
-                    bagBtn.style.display = 'fles';
+                    bagBtn.style.display = 'flex';
                 }
 
                 if (userInfo != null && userInfo.role === 'admin') {
