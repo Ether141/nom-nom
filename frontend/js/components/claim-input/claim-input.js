@@ -50,7 +50,11 @@ export default class ClaimInput extends HTMLElement {
     }
 
     set value(val) {
-        this.input.value = val;
+        if (this.type == 'file') {
+            this.input.filename = val;
+        } else {
+            this.input.value = val;
+        }
     }
 
     invalid(text) {
