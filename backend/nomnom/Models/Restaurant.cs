@@ -22,7 +22,7 @@ public class Restaurant
     public string Tags { get; set; }
 
     [Column("banner_path")]
-    public string BannerPath { get; set; }
+    public string BannerPath { get; set; } = "";
 
     [Column("delivery_price")]
     public decimal DeliveryPrice { get; set; }
