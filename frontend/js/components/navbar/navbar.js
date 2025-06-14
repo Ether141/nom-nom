@@ -3,6 +3,9 @@ import ApiClient from "../../api.js"
 export default class Navbar extends HTMLElement {
     #bagCountElement;
     #bagVisible = false;
+    #canShowBag = false;
+    #bag;
+    #bagBtn;
 
     constructor() {
         super();
@@ -108,16 +111,20 @@ export default class Navbar extends HTMLElement {
     }
 
     connectedCallback() {
-        const bagBtn = this.querySelector('#bag-btn');
-        const bag = document.querySelector('x-bag');
+        this.#bagBtn = this.querySelector('#bag-btn');
+        this.#bag = document.querySelector('x-bag');
         const client = new ApiClient();
 
-        bagBtn.style.display = 'none';
+        this.#bagBtn.style.display = 'none';
+
+        window.addEventListener('resize', () => {
+            this.#showBagBtnIfNeeded();
+        });
 
         client.fetchUserInfo()
             .then(userInfo => {
-                if (userInfo != null && bag != null) {
-                    bagBtn.style.display = 'flex';
+                if (userInfo != null && this.#bag != null) {
+                    this.#canShowBag = true;
                 }
 
                 if (userInfo != null && userInfo.role === 'admin') {
@@ -126,6 +133,8 @@ export default class Navbar extends HTMLElement {
                         button.style.display = 'flex';
                     });
                 }
+
+                this.#showBagBtnIfNeeded();
             });
 
         if (this.minimal) {
@@ -164,18 +173,14 @@ export default class Navbar extends HTMLElement {
             });
         });
 
-        if (bag != null) {
-            bagBtn.addEventListener('click', () => {
-                if (bag == null) {
-                    return;
-                }
-
+        if (this.#bag != null) {
+            this.#bagBtn.addEventListener('click', () => {
                 if (this.#bagVisible) {
-                    bag.hideBag();
+                    this.#bag.hideBag();
                     this.#bagVisible = false;
                     document.body.style.overflow = 'auto';
                 } else {
-                    bag.showBag();
+                    this.#bag.showBag();
                     this.#bagVisible = true;
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     document.body.style.overflow = 'hidden';
@@ -187,6 +192,23 @@ export default class Navbar extends HTMLElement {
         }
 
         this.refreshUser();
+    }
+
+    #showBagBtnIfNeeded() {
+        if (!this.#bag) {
+            return;
+        }
+
+        if (window.innerWidth < 900 && this.#canShowBag) {
+            this.#bagBtn.style.display = 'flex';
+        } else {
+            this.#bagBtn.style.display = 'none';
+            if (this.#bag && this.#bagVisible) {
+                this.#bag.hideBag();
+                this.#bagVisible = false;
+                document.body.style.overflow = 'auto';
+            }
+        }
     }
 
     refreshUser() {
