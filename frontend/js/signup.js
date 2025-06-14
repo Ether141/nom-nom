@@ -1,7 +1,7 @@
 import ApiClient from "./api.js";
 import SuccessIndicator from "./components/success-indicator/success-indicator.js";
 
-import { ERR_GENERAL, ERR_NAME_LENGTH, ERR_INVALID_EMAIL, ERR_EMAIL_EXISTS, ERR_PASSWORD_PATTERN, ERR_PASSWORD_MISMATCH, ERR_ERRORS, ERR_RULES_ACCEPTANCE } from "./resources.js";
+import { ERR_GENERAL, ERR_NAME_LENGTH, ERR_INVALID_EMAIL, ERR_EMAIL_EXISTS, ERR_PASSWORD_PATTERN, ERR_PASSWORD_MISMATCH, ERR_ERRORS, ERR_RULES_ACCEPTANCE, ERR_INVALID_INPUT } from "./resources.js";
 
 const nameInput = document.querySelector('x-claim-input[inputId="firstname"]');
 const emailInput = document.querySelector('x-claim-input[inputId="email"]');

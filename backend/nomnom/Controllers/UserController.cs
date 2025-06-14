@@ -43,6 +43,12 @@ internal class UserController : Controller
             return JsonResult.FromObject(new { validationResult.Errors }, System.Net.HttpStatusCode.BadRequest);
         }
 
+        if (userRepository.Exists(u => u.Email == dto.Email))
+        {
+            logger.Info($"User creation failed for email: {dto.Email}. User with given email address already exists.");
+            return JsonResult.FromObject(new { Errors = "User with given email address already exists." }, System.Net.HttpStatusCode.BadRequest);
+        }
+
         string hashedPassword = PasswordHasher.HashPassword(dto.Password);
         dto.Password = hashedPassword;
 
